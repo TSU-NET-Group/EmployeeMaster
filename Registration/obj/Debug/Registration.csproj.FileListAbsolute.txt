@@ -1,0 +1,10 @@
+C:\Users\user\Desktop\Registration\bin\Debug\Registration.exe.config
+C:\Users\user\Desktop\Registration\bin\Debug\Registration.exe
+C:\Users\user\Desktop\Registration\bin\Debug\Registration.pdb
+C:\Users\user\Desktop\Registration\obj\Debug\Registration.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Registration\obj\Debug\Registration.RegistrationForm.resources
+C:\Users\user\Desktop\Registration\obj\Debug\Registration.Properties.Resources.resources
+C:\Users\user\Desktop\Registration\obj\Debug\Registration.csproj.GenerateResource.cache
+C:\Users\user\Desktop\Registration\obj\Debug\Registration.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Registration\obj\Debug\Registration.exe
+C:\Users\user\Desktop\Registration\obj\Debug\Registration.pdb
