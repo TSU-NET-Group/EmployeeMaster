@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,6 +21,27 @@ namespace Registration
 
         private int spacing = 50;
 
+        public Label ID_label;
+        public TextBox ID_text_box;
+        public Label password_label;
+        public TextBox password_text_box;
+        public Label email_label;
+        public TextBox email_text_box;
+        public Label name_label;
+        public TextBox name_text_box;
+        public Label lastname_label;
+        public TextBox lastname_text_box;
+        public Label phone_number_label;
+        public TextBox phone_number_text_box;
+        public Label ethnicity_label;
+        public RadioButton georgian_radio_button;
+        public RadioButton foreigner_radio_button;
+        public Label department_label;
+        public ComboBox department_combo_box;
+        public Button image_upload_button;
+        public PictureBox uploaded_image_picture_box;
+
+
         public RegistrationForm()
         {
             InitializeComponent();
@@ -28,85 +50,85 @@ namespace Registration
         private void RegistrationForm_Load(object sender, EventArgs e)
         {
             // ID_label
-            Label ID_label = new Label();
+            ID_label = new Label();
             ID_label.Location = new Point(120, spacing * 1);
             ID_label.Text = "ID";
             ID_label.AutoSize = true;
             this.Controls.Add(ID_label);
 
             // ID_text_box
-            TextBox ID_text_box = new TextBox();
+            ID_text_box = new TextBox();
             ID_text_box.Location = new Point(250, spacing * 1);
             ID_text_box.Location = new Point(250, spacing * 1);
             ID_text_box.Size = new Size(250, 25);
             this.Controls.Add(ID_text_box);
 
 
-            // paswword_label
-            Label password_label = new Label();
+            // password_label
+            password_label = new Label();
             password_label.Location = new Point(120, spacing * 2);
             password_label.Text = "Password";
             password_label.AutoSize = true;
             this.Controls.Add(password_label);
 
             // password_text_box
-            TextBox password_text_box = new TextBox();
+            password_text_box = new TextBox();
             password_text_box.Location = new Point(250, spacing * 2);
             password_text_box.Size = new Size(250, 25);
             this.Controls.Add(password_text_box);
 
 
             // email_label
-            Label email_label = new Label();
+            email_label = new Label();
             email_label.Location = new Point(120, spacing * 3);
             email_label.Text = "Email";
             email_label.AutoSize = true;
             this.Controls.Add(email_label);
 
             // email_text_box
-            TextBox email_text_box = new TextBox();
+            email_text_box = new TextBox();
             email_text_box.Location = new Point(250, spacing * 3);
             email_text_box.Size = new Size(250, 25);
             this.Controls.Add(email_text_box);
 
 
             // name_label
-            Label name_label = new Label();
+            name_label = new Label();
             name_label.Location = new Point(120, spacing * 4);
             name_label.Text = "Name";
             name_label.AutoSize = true;
             this.Controls.Add(name_label);
 
             // name_text_box
-            TextBox name_text_box = new TextBox();
+            name_text_box = new TextBox();
             name_text_box.Location = new Point(250, spacing * 4);
             name_text_box.Size = new Size(250, 25);
             this.Controls.Add(name_text_box);
 
 
             // lastname_label
-            Label lastname_label = new Label();
+            lastname_label = new Label();
             lastname_label.Location = new Point(120, spacing * 5);
             lastname_label.Text = "Last name";
             lastname_label.AutoSize = true;
             this.Controls.Add(lastname_label);
 
             // lastname_text_box
-            TextBox lastname_text_box = new TextBox();
+            lastname_text_box = new TextBox();
             lastname_text_box.Location = new Point(250, spacing * 5);
             lastname_text_box.Size = new Size(250, 25);
             this.Controls.Add(lastname_text_box);
 
 
             // lastname_label
-            Label phone_number_label = new Label();
+            phone_number_label = new Label();
             phone_number_label.Location = new Point(120, spacing * 6);
             phone_number_label.Text = "Phone Number";
             phone_number_label.AutoSize = true;
             this.Controls.Add(phone_number_label);
 
             // lastname_text_box
-            TextBox phone_number_text_box = new TextBox();
+            phone_number_text_box = new TextBox();
             phone_number_text_box.Location = new Point(250, spacing * 6);
             phone_number_text_box.Size = new Size(250, 25);
             this.Controls.Add(phone_number_text_box);
@@ -131,21 +153,21 @@ namespace Registration
             */
 
             // ethnicity_label
-            Label ethnicity_label = new Label();
+            ethnicity_label = new Label();
             ethnicity_label.Location = new Point(120, spacing * 7);
             ethnicity_label.Text = "Ethnicity";
             ethnicity_label.AutoSize = true;
             this.Controls.Add(ethnicity_label);
 
             // georgian_radio_button
-            RadioButton georgian_radio_button = new RadioButton();
+            georgian_radio_button = new RadioButton();
             georgian_radio_button.Location = new Point(250, spacing * 7);
-            georgian_radio_button.Text = "Geogian";
+            georgian_radio_button.Text = "Georgian";
             georgian_radio_button.AutoSize = true;
             this.Controls.Add(georgian_radio_button);
 
             // foreigner_radio_button
-            RadioButton foreigner_radio_button = new RadioButton();
+            foreigner_radio_button = new RadioButton();
             foreigner_radio_button.Location = new Point(250 + georgian_radio_button.Right, spacing * 7);
             foreigner_radio_button.Text = "Foreigner";
             georgian_radio_button.AutoSize = true;
@@ -153,14 +175,14 @@ namespace Registration
 
 
             // department_label
-            Label department_label = new Label();
+            department_label = new Label();
             department_label.Location = new Point(120, spacing * 8);
             department_label.Text = "Department";
             department_label.AutoSize = true;
             this.Controls.Add(department_label);
 
             // department_combo_box
-            ComboBox department_combo_box = new ComboBox();
+            department_combo_box = new ComboBox();
             department_combo_box.Location = new Point(250, spacing * 8);
             department_combo_box.Size = new Size(250, 25);
             department_combo_box.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -170,14 +192,69 @@ namespace Registration
 
 
             // upload image 
-            Button image_upload_button = new Button();
+            image_upload_button = new Button();
             image_upload_button.Location = new Point(250, spacing * 9);
             image_upload_button.Size = new Size(50, 50);
             image_upload_button.Text = "Upload\nImage";
+            image_upload_button.Click += new EventHandler(image_upload_button_Click);
             this.Controls.Add(image_upload_button);
 
 
+            // Uploaded Image Picture Box
+            uploaded_image_picture_box = new PictureBox();
+            uploaded_image_picture_box.Location = new Point(250, spacing * 10);
+            uploaded_image_picture_box.Size = new Size(200, 200);
+            uploaded_image_picture_box.SizeMode = PictureBoxSizeMode.Zoom;
+            uploaded_image_picture_box.Visible = false;
+            uploaded_image_picture_box.Enabled = false;
+            this.Controls.Add(uploaded_image_picture_box);
+        }
 
+
+        private void image_upload_button_Click(object sender, EventArgs e)
+        {
+            // allow suer to specify the image
+
+            // set up an OpenFileDialog
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Select an Image";
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                MessageBox.Show("Selected file: " + filePath);
+                uploaded_image_picture_box.Enabled = true;
+                uploaded_image_picture_box.Visible = true;
+
+                try
+                {
+                    // Load the image using a FileStream
+                    using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                    {
+                        // Load into a Bitmap to handle image conversion
+                        using (var bmp = new Bitmap(fs))
+                        {
+                            uploaded_image_picture_box.Image = new Bitmap(bmp);
+                        }
+                    }
+
+                    uploaded_image_picture_box.Enabled = true;
+                    uploaded_image_picture_box.Visible = true;
+                }
+                catch (OutOfMemoryException)
+                {
+                    MessageBox.Show("The selected image is too large or corrupted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("The image format is not supported or the file is invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

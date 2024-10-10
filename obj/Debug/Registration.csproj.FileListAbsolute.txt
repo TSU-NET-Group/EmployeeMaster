@@ -18,3 +18,13 @@ C:\Users\sabak\Desktop\NetProject\EmployeeMaster\Registration\obj\Debug\Registra
 C:\Users\sabak\Desktop\NetProject\EmployeeMaster\Registration\obj\Debug\Registration.csproj.CoreCompileInputs.cache
 C:\Users\sabak\Desktop\NetProject\EmployeeMaster\Registration\obj\Debug\Registration.exe
 C:\Users\sabak\Desktop\NetProject\EmployeeMaster\Registration\obj\Debug\Registration.pdb
+C:\Users\sabak\Desktop\NetProject\EmployeeMaster\bin\Debug\Registration.exe.config
+C:\Users\sabak\Desktop\NetProject\EmployeeMaster\bin\Debug\Registration.exe
+C:\Users\sabak\Desktop\NetProject\EmployeeMaster\bin\Debug\Registration.pdb
+C:\Users\sabak\Desktop\NetProject\EmployeeMaster\obj\Debug\Registration.csproj.AssemblyReference.cache
+C:\Users\sabak\Desktop\NetProject\EmployeeMaster\obj\Debug\Registration.RegistrationForm.resources
+C:\Users\sabak\Desktop\NetProject\EmployeeMaster\obj\Debug\Registration.Properties.Resources.resources
+C:\Users\sabak\Desktop\NetProject\EmployeeMaster\obj\Debug\Registration.csproj.GenerateResource.cache
+C:\Users\sabak\Desktop\NetProject\EmployeeMaster\obj\Debug\Registration.csproj.CoreCompileInputs.cache
+C:\Users\sabak\Desktop\NetProject\EmployeeMaster\obj\Debug\Registration.exe
+C:\Users\sabak\Desktop\NetProject\EmployeeMaster\obj\Debug\Registration.pdb
