@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 
@@ -23,23 +24,33 @@ namespace Registration
 
         public Label ID_label;
         public TextBox ID_text_box;
+
         public Label password_label;
         public TextBox password_text_box;
+        
         public Label email_label;
         public TextBox email_text_box;
+        
         public Label name_label;
         public TextBox name_text_box;
+        
         public Label lastname_label;
         public TextBox lastname_text_box;
+        
         public Label phone_number_label;
         public TextBox phone_number_text_box;
+        
         public Label ethnicity_label;
         public RadioButton georgian_radio_button;
+        
         public RadioButton foreigner_radio_button;
         public Label department_label;
+        
         public ComboBox department_combo_box;
         public Button image_upload_button;
+        
         public PictureBox uploaded_image_picture_box;
+        public Button register_button;
 
 
         public RegistrationForm()
@@ -194,11 +205,10 @@ namespace Registration
             // upload image 
             image_upload_button = new Button();
             image_upload_button.Location = new Point(250, spacing * 9);
-            image_upload_button.Size = new Size(50, 50);
+            image_upload_button.Size = new Size(100, 50);
             image_upload_button.Text = "Upload\nImage";
             image_upload_button.Click += new EventHandler(image_upload_button_Click);
             this.Controls.Add(image_upload_button);
-
 
             // Uploaded Image Picture Box
             uploaded_image_picture_box = new PictureBox();
@@ -208,6 +218,17 @@ namespace Registration
             uploaded_image_picture_box.Visible = false;
             uploaded_image_picture_box.Enabled = false;
             this.Controls.Add(uploaded_image_picture_box);
+            
+            
+            // finish registration
+            register_button = new Button();
+            register_button.Location = new Point(500, spacing * 9);
+            register_button.Size = new Size(100, 50);
+            register_button.Text = "Register";
+            register_button.Click += new EventHandler(register_button_Click);
+            this.Controls.Add(register_button);
+
+
         }
 
 
@@ -256,5 +277,125 @@ namespace Registration
                 }
             }
         }
+
+        private void register_button_Click(object sender, EventArgs e)
+        {
+            if (check_id(ID_text_box.Text)) return;
+            
+            if (check_password(password_text_box.Text)) return;
+            
+            if (check_email(email_text_box.Text)) return;
+            
+            if (check_name(name_text_box.Text)) return;
+            
+            if (check_lastname(lastname_text_box.Text)) return;
+            
+            if (check_phone_number(phone_number_text_box.Text)) return;
+
+            if (check_ethnicity()) return;
+        }
+
+
+        // a helper methods to validate input fields
+
+        private bool check_id(string _ID)
+        {
+            // TODO: IMPLEMENT MORE CHECKS
+            if (_ID.Length == 0)
+            {
+                ID_text_box.BackColor = Color.Red;
+                MessageBox.Show("ID is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            return true;
+        }
+        
+        private bool check_password(string _password)
+        {
+            // TODO: IMPLEMENT MORE CHECKS
+            if (_password.Length == 0)
+            {
+                password_text_box.BackColor = Color.Red;
+                MessageBox.Show("Password is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private bool check_email(string _email)
+        {
+            // TODO: IMPLEMENT MORE CHECKS
+            if (_email.Length == 0)
+            {
+                email_text_box.BackColor = Color.Red;
+                MessageBox.Show("Email is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private bool check_name(string _name)
+        {
+            // TODO: IMPLEMENT MORE CHECKS
+            if (_name.Length == 0)
+            {
+                name_text_box.BackColor = Color.Red;
+                MessageBox.Show("name is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private bool check_lastname(string _lastname)
+        {
+            // TODO: IMPLEMENT MORE CHECKS
+            if (_lastname.Length == 0)
+            {
+                lastname_text_box.BackColor = Color.Red;
+                MessageBox.Show("Last Name is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private bool check_phone_number(string _phone_number)
+        {
+            // TODO: IMPLEMENT MORE CHECKS
+            if (_phone_number.Length == 0)
+            {
+                phone_number_text_box.BackColor = Color.Red;
+                MessageBox.Show("Phone Number is empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private bool check_ethnicity()
+        {
+            // TODO: IMPLEMENT MORE CHECKS
+            if (!georgian_radio_button.Checked && !foreigner_radio_button.Checked)
+            {
+                ethnicity_label.BackColor = Color.Red;
+                MessageBox.Show("Ethnicity not selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+            return true;
+        }
+
+        
     }
 }

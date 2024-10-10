@@ -30,9 +30,9 @@
               "Title": "Registration.cs",
               "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Registration.cs",
               "RelativeDocumentMoniker": "Registration.cs",
-              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Registration.cs",
-              "RelativeToolTip": "Registration.cs",
-              "ViewState": "AgIAAMUAAAAAAAAAAAAqwOoAAABIAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Registration.cs*",
+              "RelativeToolTip": "Registration.cs*",
+              "ViewState": "AgIAANgAAAAAAAAAAAAAACwBAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-09T13:33:18.25Z",
               "EditorCaption": ""
@@ -47,7 +47,8 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T13:33:07.491Z"
+              "WhenOpened": "2024-10-09T13:33:07.491Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -55,10 +56,11 @@
               "Title": "Registration.cs [Design]",
               "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Registration.cs",
               "RelativeDocumentMoniker": "Registration.cs",
-              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Registration\\Registration.cs [Design]",
-              "RelativeToolTip": "Registration\\Registration.cs [Design]",
+              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Registration.cs [Design]*",
+              "RelativeToolTip": "Registration.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T13:32:57.879Z"
+              "WhenOpened": "2024-10-09T13:32:57.879Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
