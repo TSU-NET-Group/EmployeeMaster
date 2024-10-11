@@ -52,14 +52,41 @@ namespace Registration
         public PictureBox uploaded_image_picture_box;
         public Button register_button;
 
+        public ComboBox Combobox_Language;
+        public GroupBox groupbox = new GroupBox();
+
+
+
 
         public RegistrationForm()
         {
             InitializeComponent();
+           
         }
 
         private void RegistrationForm_Load(object sender, EventArgs e)
         {
+            
+            //Manipulations with window settings 
+            this.Size = new Size(800, 800);
+            //this.MinimumSize = new Size(800, 800);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            
+            
+
+            //combobox for choosing languages
+            Combobox_Language = new ComboBox();
+            Combobox_Language.Location = new Point(620, spacing * 1);
+            Combobox_Language.Size = new Size(50, 25);
+            Combobox_Language.DropDownStyle = ComboBoxStyle.DropDownList;
+            Combobox_Language.Items.Add("Eng");
+            Combobox_Language.Items.Add("Geo");
+            Combobox_Language.SelectedIndex = 0;
+            this.Controls.Add(Combobox_Language);
+
+
+
             // ID_label
             ID_label = new Label();
             ID_label.Location = new Point(120, spacing * 1);
@@ -144,24 +171,24 @@ namespace Registration
             phone_number_text_box.Size = new Size(250, 25);
             this.Controls.Add(phone_number_text_box);
 
-            /* TODO: THIS MIGHT BE USEFUL
+            // TODO: THIS MIGHT BE USEFUL
             // ethnicity_label
-            Label ethnicity_label = new Label();
-            ethnicity_label.Location = new Point(120, spacing * 7);
-            ethnicity_label.Text = "Ethnicity";
-            ethnicity_label.AutoSize = true;
-            this.Controls.Add(ethnicity_label);
+            //Label ethnicity_label = new Label();
+            //ethnicity_label.Location = new Point(120, spacing * 7);
+            //ethnicity_label.Text = "Ethnicity";
+            //ethnicity_label.AutoSize = true;
+            //this.Controls.Add(ethnicity_label);
 
             // ethnicity_combo_box
-            ComboBox ethnicity_combo_box = new ComboBox();
-            ethnicity_combo_box.Location = new Point(250, spacing * 7);
-            ethnicity_combo_box.Size = new Size(250, 25);
-            ethnicity_combo_box.DropDownStyle = ComboBoxStyle.DropDownList;
-            ethnicity_combo_box.Items.Add("Ethnicity");
-            ethnicity_combo_box.Items.AddRange(ALL_COUNTRIES);
-            ethnicity_combo_box.SelectedIndex = 0;
-            this.Controls.Add(ethnicity_combo_box);
-            */
+            //ComboBox ethnicity_combo_box = new ComboBox();
+            //ethnicity_combo_box.Location = new Point(350, spacing * 7);
+            //ethnicity_combo_box.Size = new Size(200, 25);
+            //ethnicity_combo_box.DropDownStyle = ComboBoxStyle.DropDownList;
+            //ethnicity_combo_box.Items.Add("Ethnicity");
+            //ethnicity_combo_box.Items.AddRange(ALL_COUNTRIES);
+            //ethnicity_combo_box.SelectedIndex = 0;
+            //this.Controls.Add(ethnicity_combo_box);
+
 
             // ethnicity_label
             ethnicity_label = new Label();
@@ -229,6 +256,36 @@ namespace Registration
             this.Controls.Add(register_button);
 
 
+            //Group box 
+            groupbox.Text = "Registration";
+            groupbox.Font = new Font(groupbox.Font.FontFamily, 12);
+            groupbox.Size = new Size(800, 1000);
+            
+
+
+            groupbox.Controls.Add(ID_label);
+            groupbox.Controls.Add(ID_text_box);
+            groupbox.Controls.Add(name_label);
+            groupbox.Controls.Add(name_text_box);
+            groupbox.Controls.Add(lastname_label);
+            groupbox.Controls.Add(lastname_text_box);
+            groupbox.Controls.Add(password_label);
+            groupbox.Controls.Add(password_text_box);
+            groupbox.Controls.Add(phone_number_label);
+            groupbox.Controls.Add(phone_number_text_box);
+            groupbox.Controls.Add(email_label);
+            groupbox.Controls.Add(email_text_box);
+            groupbox.Controls.Add(register_button);
+            groupbox.Controls.Add(image_upload_button);
+            groupbox.Controls.Add(uploaded_image_picture_box);
+            groupbox.Controls.Add(department_label);
+            groupbox.Controls.Add(department_combo_box);
+            groupbox.Controls.Add(ethnicity_label);
+            groupbox.Controls.Add(foreigner_radio_button);
+            groupbox.Controls.Add(georgian_radio_button);
+
+
+            this.Controls.Add(groupbox);
         }
 
 
