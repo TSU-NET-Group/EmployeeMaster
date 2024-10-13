@@ -14,7 +14,7 @@ namespace GroupProject_v001
 {
     public partial class Form_forgotPassword : Form
     {
-        public Form1 mainForm;
+        public LoginForm mainForm;
         public Form_forgotPassword()
         {
             InitializeComponent();

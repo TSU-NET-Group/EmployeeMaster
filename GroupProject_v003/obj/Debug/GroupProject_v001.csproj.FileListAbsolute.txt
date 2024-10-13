@@ -42,3 +42,14 @@ E:\#___dotNET\GroupProject_v002\obj\Debug\GroupProject_v001.pdb
 E:\#___dotNET\GroupProject_v002\bin\Debug\GroupProject_v001.exe.config
 E:\#___dotNET\GroupProject_v002\bin\Debug\GroupProject_v001.exe
 E:\#___dotNET\GroupProject_v002\bin\Debug\GroupProject_v001.pdb
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\bin\Debug\GroupProject_v001.exe.config
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\bin\Debug\GroupProject_v001.exe
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\bin\Debug\GroupProject_v001.pdb
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\obj\Debug\GroupProject_v001.csproj.AssemblyReference.cache
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\obj\Debug\GroupProject_v001.Form_forgotPassword.resources
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\obj\Debug\GroupProject_v001.Properties.Resources.resources
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\obj\Debug\GroupProject_v001.csproj.GenerateResource.cache
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\obj\Debug\GroupProject_v001.csproj.CoreCompileInputs.cache
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\obj\Debug\GroupProject_v001.exe
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\obj\Debug\GroupProject_v001.pdb
+C:\Users\THEBU\Source\Repos\EmployeeMaster\GroupProject_v003\obj\Debug\GroupProject_v001.LoginForm.resources

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.34601.136
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupProject_v001", "GroupProject_v001.csproj", "{DF20FED8-50CC-4F90-86E9-643A19E6F594}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeMaster", "EmployeeMaster.csproj", "{DF20FED8-50CC-4F90-86E9-643A19E6F594}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
