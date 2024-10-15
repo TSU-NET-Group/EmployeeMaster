@@ -53,6 +53,7 @@
     <Compile Include="HRview.Designer.cs">
       <DependentUpon>HRview.cs</DependentUpon>
     </Compile>
+    <Compile Include="HR_Module.cs" />
     <Compile Include="LanguagePack.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
