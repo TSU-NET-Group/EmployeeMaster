@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 
@@ -27,28 +27,28 @@ namespace Registration
 
         public Label password_label;
         public TextBox password_text_box;
-        
+
         public Label email_label;
         public TextBox email_text_box;
-        
+
         public Label name_label;
         public TextBox name_text_box;
-        
+
         public Label lastname_label;
         public TextBox lastname_text_box;
-        
+
         public Label phone_number_label;
         public TextBox phone_number_text_box;
-        
+
         public Label ethnicity_label;
         public RadioButton georgian_radio_button;
-        
+
         public RadioButton foreigner_radio_button;
         public Label department_label;
-        
+
         public ComboBox department_combo_box;
         public Button image_upload_button;
-        
+
         public PictureBox uploaded_image_picture_box;
         public Button register_button;
 
@@ -61,19 +61,19 @@ namespace Registration
         public RegistrationForm()
         {
             InitializeComponent();
-           
+
         }
 
         private void RegistrationForm_Load(object sender, EventArgs e)
         {
-            
+
             //Manipulations with window settings 
             this.Size = new Size(800, 800);
             //this.MinimumSize = new Size(800, 800);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            
-            
+
+
 
             //combobox for choosing languages
             Combobox_Language = new ComboBox();
@@ -99,6 +99,7 @@ namespace Registration
             ID_text_box.Location = new Point(250, spacing * 1);
             ID_text_box.Location = new Point(250, spacing * 1);
             ID_text_box.Size = new Size(250, 25);
+            ID_text_box.Enter += ID_text_box_Enter;
             this.Controls.Add(ID_text_box);
 
 
@@ -113,6 +114,7 @@ namespace Registration
             password_text_box = new TextBox();
             password_text_box.Location = new Point(250, spacing * 2);
             password_text_box.Size = new Size(250, 25);
+            password_text_box.Enter += password_text_box_Enter;
             this.Controls.Add(password_text_box);
 
 
@@ -127,6 +129,7 @@ namespace Registration
             email_text_box = new TextBox();
             email_text_box.Location = new Point(250, spacing * 3);
             email_text_box.Size = new Size(250, 25);
+            email_text_box.Enter += email_text_box_Enter;
             this.Controls.Add(email_text_box);
 
 
@@ -141,6 +144,7 @@ namespace Registration
             name_text_box = new TextBox();
             name_text_box.Location = new Point(250, spacing * 4);
             name_text_box.Size = new Size(250, 25);
+            name_text_box.Enter += name_text_box_Enter;
             this.Controls.Add(name_text_box);
 
 
@@ -155,6 +159,7 @@ namespace Registration
             lastname_text_box = new TextBox();
             lastname_text_box.Location = new Point(250, spacing * 5);
             lastname_text_box.Size = new Size(250, 25);
+            lastname_text_box.Enter += lastname_text_box_Enter;
             this.Controls.Add(lastname_text_box);
 
 
@@ -165,10 +170,11 @@ namespace Registration
             phone_number_label.AutoSize = true;
             this.Controls.Add(phone_number_label);
 
-            // lastname_text_box
+            // phone_number_text_box
             phone_number_text_box = new TextBox();
             phone_number_text_box.Location = new Point(250, spacing * 6);
             phone_number_text_box.Size = new Size(250, 25);
+            phone_number_text_box.Enter += phone_number_text_box_Enter;
             this.Controls.Add(phone_number_text_box);
 
             // TODO: THIS MIGHT BE USEFUL
@@ -245,8 +251,8 @@ namespace Registration
             uploaded_image_picture_box.Visible = false;
             uploaded_image_picture_box.Enabled = false;
             this.Controls.Add(uploaded_image_picture_box);
-            
-            
+
+
             // finish registration
             register_button = new Button();
             register_button.Location = new Point(500, spacing * 9);
@@ -260,7 +266,7 @@ namespace Registration
             groupbox.Text = "Registration";
             groupbox.Font = new Font(groupbox.Font.FontFamily, 12);
             groupbox.Size = new Size(800, 1000);
-            
+
 
 
             groupbox.Controls.Add(ID_label);
@@ -287,6 +293,55 @@ namespace Registration
 
             this.Controls.Add(groupbox);
         }
+
+        private void ID_text_box_Enter(object sender, EventArgs e)
+        {
+            if (ID_text_box.BackColor == Color.Red)
+            {
+                ID_text_box.BackColor = Color.White;
+            }
+        }
+
+        private void password_text_box_Enter(object sender, EventArgs e)
+        {
+            if (password_text_box.BackColor == Color.Red)
+            {
+                password_text_box.BackColor = Color.White;
+            }
+        }
+
+        private void email_text_box_Enter(object sender, EventArgs e)
+        {
+            if (email_text_box.BackColor == Color.Red)
+            {
+                email_text_box.BackColor = Color.White;
+            }
+        }
+
+        private void name_text_box_Enter(object sender, EventArgs e)
+        {
+            if (name_text_box.BackColor == Color.Red)
+            {
+                name_text_box.BackColor = Color.White;
+            }
+        }
+
+        private void lastname_text_box_Enter(object sender, EventArgs e)
+        {
+            if (lastname_text_box.BackColor == Color.Red)
+            {
+                lastname_text_box.BackColor = Color.White;
+            }
+        }
+
+        private void phone_number_text_box_Enter(object sender, EventArgs e)
+        {
+            if (phone_number_text_box.BackColor == Color.Red)
+            {
+                phone_number_text_box.BackColor = Color.White;
+            }
+        }
+
 
 
         private void image_upload_button_Click(object sender, EventArgs e)
@@ -337,20 +392,25 @@ namespace Registration
 
         private void register_button_Click(object sender, EventArgs e)
         {
-            if (check_id(ID_text_box.Text)) return;
-            
-            if (check_password(password_text_box.Text)) return;
-            
-            if (check_email(email_text_box.Text)) return;
-            
-            if (check_name(name_text_box.Text)) return;
-            
-            if (check_lastname(lastname_text_box.Text)) return;
-            
-            if (check_phone_number(phone_number_text_box.Text)) return;
+            bool passed_validation;
 
-            if (check_ethnicity()) return;
+            passed_validation = check_id(ID_text_box.Text);
+
+            passed_validation = check_password(password_text_box.Text);
+
+            passed_validation = check_email(email_text_box.Text);
+
+            passed_validation = check_name(name_text_box.Text);
+
+            passed_validation = check_lastname(lastname_text_box.Text);
+
+            passed_validation = check_phone_number(phone_number_text_box.Text);
+
+            passed_validation = check_ethnicity();
+
+
         }
+
 
 
         // a helper methods to validate input fields
@@ -365,10 +425,26 @@ namespace Registration
                 return false;
             }
 
+            if (georgian_radio_button.Checked)
+            {
+                if (_ID.Length != 11)
+                {
+                    ID_text_box.BackColor = Color.Red;
+                    MessageBox.Show("ID must be 11 numbers long.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (Regex.IsMatch(_ID, @"\D"))
+                {
+                    ID_text_box.BackColor = Color.Red;
+                    MessageBox.Show("ID must only contain numbers.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
 
             return true;
         }
-        
+
         private bool check_password(string _password)
         {
             // TODO: IMPLEMENT MORE CHECKS
@@ -453,6 +529,6 @@ namespace Registration
             return true;
         }
 
-        
+
     }
 }
