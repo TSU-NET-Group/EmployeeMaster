@@ -1,0 +1,4 @@
+Client-Side/bin/*
+Client-Side/debug/*
+Client-Side/.vs
+Client-Side/obj/*
