@@ -1,7 +1,7 @@
 ﻿
 namespace Registration
 {
-    partial class RegistrationForm
+    partial class NewUserCreation
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +31,13 @@ namespace Registration
         {
             this.SuspendLayout();
             // 
-            // RegistrationForm
+            // NewUserCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "RegistrationForm";
-            this.Text = "Registration";
+            this.Name = "NewUserCreation";
+            this.Text = "NewUserCreation";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
             this.ResumeLayout(false);
 

@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|Registration.csproj|c:\\users\\sabak\\desktop\\netproject\\employeemaster\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|Registration.csproj|solutionrelative:registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|c:\\users\\sabak\\desktop\\netproject\\employeemaster\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|Registration.csproj|C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|Registration.csproj|solutionrelative:registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|c:\\users\\sabak\\desktop\\netproject\\employeemaster\\newusercreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|solutionrelative:newusercreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|Registration.csproj|C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|Registration.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|c:\\users\\sabak\\desktop\\netproject\\employeemaster\\newusercreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|solutionrelative:newusercreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,12 +27,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Registration.cs",
-              "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Registration.cs",
-              "RelativeDocumentMoniker": "Registration.cs",
-              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Registration.cs",
-              "RelativeToolTip": "Registration.cs",
-              "ViewState": "AgIAACgBAAAAAAAAAAAiwE0BAAANAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T13:32:41.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NewUserCreation.cs",
+              "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\NewUserCreation.cs",
+              "RelativeDocumentMoniker": "NewUserCreation.cs",
+              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\NewUserCreation.cs",
+              "RelativeToolTip": "NewUserCreation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-09T13:33:18.25Z",
               "EditorCaption": ""
@@ -40,25 +53,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
+              "Title": "NewUserCreation.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\NewUserCreation.cs",
+              "RelativeDocumentMoniker": "NewUserCreation.cs",
+              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\NewUserCreation.cs [Design]",
+              "RelativeToolTip": "NewUserCreation.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T13:33:07.491Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Registration.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Registration.cs",
-              "RelativeDocumentMoniker": "Registration.cs",
-              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Registration.cs [Design]",
-              "RelativeToolTip": "Registration.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T13:32:57.879Z"
+              "WhenOpened": "2024-10-09T13:32:57.879Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
