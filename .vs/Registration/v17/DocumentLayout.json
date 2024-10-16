@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|solutionrelative:newusercreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|c:\\users\\sabak\\desktop\\netproject\\employeemaster\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\newusercreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|solutionrelative:newusercreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|c:\\users\\sabak\\desktop\\netproject\\employeemaster\\newusercreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|solutionrelative:newusercreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AC6EC1F-8281-4C26-B8B0-EB765161E67B}|NewUserCreation.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -34,8 +34,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T13:32:41.775Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-16T13:32:41.775Z"
             },
             {
               "$type": "Document",
@@ -43,24 +42,23 @@
               "Title": "NewUserCreation.cs",
               "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\NewUserCreation.cs",
               "RelativeDocumentMoniker": "NewUserCreation.cs",
-              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\NewUserCreation.cs*",
-              "RelativeToolTip": "NewUserCreation.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\NewUserCreation.cs",
+              "RelativeToolTip": "NewUserCreation.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAC0AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-09T13:33:18.25Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "NewUserCreation.cs [Design]",
               "DocumentMoniker": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\NewUserCreation.cs",
               "RelativeDocumentMoniker": "NewUserCreation.cs",
-              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\NewUserCreation.cs [Design]*",
-              "RelativeToolTip": "NewUserCreation.cs [Design]*",
+              "ToolTip": "C:\\Users\\sabak\\Desktop\\NetProject\\EmployeeMaster\\NewUserCreation.cs [Design]",
+              "RelativeToolTip": "NewUserCreation.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T13:32:57.879Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-09T13:32:57.879Z"
             }
           ]
         }

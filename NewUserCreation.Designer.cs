@@ -38,7 +38,7 @@ namespace Registration
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "NewUserCreation";
             this.Text = "NewUserCreation";
-            this.Load += new System.EventHandler(this.RegistrationForm_Load);
+            this.Load += new System.EventHandler(this.NewUserCreation_Load);
             this.ResumeLayout(false);
 
         }
