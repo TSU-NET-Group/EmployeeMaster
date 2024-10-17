@@ -54,6 +54,12 @@
       <DependentUpon>HRview.cs</DependentUpon>
     </Compile>
     <Compile Include="HR_Module.cs" />
+    <Compile Include="KeyCardInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyCardInterface.Designer.cs">
+      <DependentUpon>KeyCardInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="LanguagePack.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -77,6 +83,9 @@
     </Compile>
     <EmbeddedResource Include="HRview.resx">
       <DependentUpon>HRview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeyCardInterface.resx">
+      <DependentUpon>KeyCardInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

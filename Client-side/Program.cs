@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GroupProject_v001;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace EmployeeMaster
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new KeyCardInterface());
         }
     }
 }
