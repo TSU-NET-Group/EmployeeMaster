@@ -87,11 +87,15 @@ namespace Registration
         {
             // set up a user data table
             user_data_table = new DataTable();
+            /*
             user_data_table.Columns.Add("id", typeof(int));
             user_data_table.Columns.Add("user_personal_id", typeof(string));
             user_data_table.Columns.Add("user_mail", typeof(string));
             user_data_table.Columns.Add("user_phone", typeof(string));
             user_data_table.Columns.Add("user_name", typeof(string));
+            */
+
+            user_data_table.Columns.AddRange(EmployeeMaster.columns.column_names.ToArray());
         }
 
         public static void add_to_user_table(params user_struct[] _users)
