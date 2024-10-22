@@ -1,9 +1,7 @@
 ﻿
-using System.Windows.Forms;
-
 namespace Registration
 {
-    partial class RegistrationForm : Form
+    partial class RegistrationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -40,7 +38,7 @@ namespace Registration
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "RegistrationForm";
             this.Text = "Registration";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistrationForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistrationForm_FormClosed);
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
             this.ResumeLayout(false);
 
