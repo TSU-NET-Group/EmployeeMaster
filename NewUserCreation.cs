@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Registration
         public static DataTable user_data_table;
         public static TextBox search_text_box;
         public static DataGridView user_data_grid_view;
-
+        public static ComboBox search_option_combo_box;
 
         public NewUserCreation()
         {
@@ -37,7 +38,7 @@ namespace Registration
             user_data_table.Columns.Add("id", typeof(int));
             user_data_table.Columns.Add("user_personal_id", typeof(string));
             user_data_table.Columns.Add("user_mail", typeof(string));
-            user_data_table.Columns.Add("user_phone", typeof(int));
+            user_data_table.Columns.Add("user_phone", typeof(string));
             user_data_table.Columns.Add("user_name", typeof(string));
         }
 
@@ -76,6 +77,24 @@ namespace Registration
 
             initialize_data_tables(); // set up all the data tables
 
+
+            // set up combo box for searching bu specific type
+            search_option_combo_box = new ComboBox();
+            search_option_combo_box.Location = new Point(640, 250);
+            search_option_combo_box.Size = new Size(100, 25);
+            search_option_combo_box.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.Controls.Add(search_option_combo_box);
+
+            search_option_combo_box.Items.AddRange(user_data_table.Columns
+    .Cast<DataColumn>()
+    .Select(column => column.ColumnName)
+    .ToArray());
+
+            search_option_combo_box.SelectedIndex = 0;
+
+
+
+
             // create dummy data for testing
             user_struct user1 = new user_struct { id = 1, user_id = "555555", user_email = "sasa@gmail.com", user_phone = 45875489, user_name = "saba shengelia" };
             user_struct user2 = new user_struct { id = 2, user_id = "8945884", user_email = "soso@gmail.com", user_phone = 84578423, user_name = "soso wiqarishvili" };
@@ -92,22 +111,54 @@ namespace Registration
         private void search_text_box_TextChanged(object sender, EventArgs e)
         {
             string searchTerm = search_text_box.Text.ToLower();
+            string searchColumn = search_option_combo_box.Text;
 
-            // Filter the DataTable based on the search term
-            var filteredRows = user_data_table.AsEnumerable()
-                .Where(row => row.Field<string>("user_name").ToLower().Contains(searchTerm));
-
-            // Check if any rows match the filter
-            if (filteredRows.Any())
+            try
             {
-                // If there are matches, update the DataGridView
-                user_data_grid_view.DataSource = filteredRows.CopyToDataTable();
+                IEnumerable<DataRow> filteredRows;
+
+                // Check the column type to apply the correct filtering logic
+                if (user_data_table.Columns[searchColumn].DataType == typeof(int))
+                {
+                    // Attempt to parse the input as an integer for exact matches
+                    if (int.TryParse(searchTerm, out int searchValue))
+                    {
+                        // Filter rows that match the exact integer value
+                        filteredRows = user_data_table.AsEnumerable()
+                            .Where(row => row.Field<int>(searchColumn) == searchValue);
+                    }
+                    else
+                    {
+                        // If the input is not a valid integer, show no results
+                        filteredRows = Enumerable.Empty<DataRow>();
+                    }
+                }
+                else
+                {
+                    // For string columns, use case-insensitive search
+                    filteredRows = user_data_table.AsEnumerable()
+                        .Where(row => row.Field<string>(searchColumn).ToLower().Contains(searchTerm));
+                }
+
+                // Check if any rows match the filter
+                if (filteredRows.Any())
+                {
+                    // If there are matches, update the DataGridView
+                    user_data_grid_view.DataSource = filteredRows.CopyToDataTable();
+                }
+                else
+                {
+                    // If no matches, clear the DataGridView or show all rows
+                    user_data_grid_view.DataSource = user_data_table;
+                }
             }
-            else
+            catch
             {
-                // If no matches, clear the DataGridView or show all rows
+                // Handle any exceptions gracefully, for example, reset the DataGridView
                 user_data_grid_view.DataSource = user_data_table;
             }
         }
+
+
     }
 }
