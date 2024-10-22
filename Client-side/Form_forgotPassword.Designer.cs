@@ -104,6 +104,7 @@ namespace EmployeeMaster
             this.Name = "Form_forgotPassword";
             this.Text = "Form_forgotPassword";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.event_formClosingClick);
+            this.Load += new System.EventHandler(this.Form_forgotPassword_Load);
             this.groupBox_ForgotPassword.ResumeLayout(false);
             this.groupBox_ForgotPassword.PerformLayout();
             this.ResumeLayout(false);

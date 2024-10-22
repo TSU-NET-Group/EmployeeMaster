@@ -1,4 +1,5 @@
-﻿using Registration;
+﻿using GroupProject_v001;
+using Registration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,7 @@ namespace EmployeeMaster
         }
 
 
-       
+
 
 
 
@@ -46,9 +47,9 @@ namespace EmployeeMaster
              *      რამდენად სწორი აიდი და პაროლია, ამის ვალიდაცია
             */
 
-            
+
             // თუ მთლიანად ცარიელია ფორმა
-            if(!(radioBtnForeigner.Checked || radioBtnGeorgian.Checked) && input_ID.Text.Trim() == "" && input_password.Text.Trim() == "")
+            if (!(radioBtnForeigner.Checked || radioBtnGeorgian.Checked) && input_ID.Text.Trim() == "" && input_password.Text.Trim() == "")
             {
                 label_errorMessage.Text = ErrorMessagePack.errorOf(Error.noNothing).message;
                 return;
@@ -99,11 +100,20 @@ namespace EmployeeMaster
 
             // თუ ყველაფერი სწორი აღმოჩნდა შესრულდეს შესვლის ოპერაცია, რასაც სხვა მოდული უზრუნველყოფს
 
-            
+
+
+            if (input_password.Text.Equals(Form_forgotPassword.oneTimePassword))
+            {
+                NewPasswordForm newPasswordForm = new NewPasswordForm();
+                this.Hide();
+                newPasswordForm.Show();
+                return;
+            }
+
             HRview hRview = new HRview();
 
             this.Hide();
-            
+
             hRview.Show();
             // შესვლის ოოერაცია:
             // func();
