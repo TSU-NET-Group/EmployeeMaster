@@ -10,39 +10,29 @@ using System.Data;
 
 namespace EmployeeMaster
 {
-
-    // employee class prototype
-    /*
-    enum Department
+    //all column names/types that exist in the structure
+    public static class columns
     {
-
+        public static List<DataColumn> column_names = new List<DataColumn> { new DataColumn("id",typeof(int)),
+            new DataColumn("user_personal_id",typeof(string)),
+            new DataColumn("user_mail",typeof(string)),
+            new DataColumn("user_phone",typeof(string)),
+            new DataColumn("user_name",typeof(string)),
+            };    
     }
-    enum Ethnicity
-    {
 
-    }
-    class Employee
-    {
-        int ID, Phone_Number;
-        String Password, Email, Name, Last_Name;
-        Department Department_Member;
-        Ethnicity EMployee_Ethnicity;
-        string Image_Link;
+    
 
-    }
-    */
-    //List<string> Column_Names {"piradi nomeri","saxeli/gvari"};
 
     class HR_module
     {
-        //needs employee class to create an employee list
+
+        DataTable Employees;
 
         public DataTable Employee_Table;
         DataTable Result_Table;
 
-        //all column names/types that exist in the structure, this is temporary
-        public static List<string> Column_Names= new List<string> {"ID","saxeli/gvari"};
-
+        
 
         List<Tuple<string,Type>> Column_Type;
 
@@ -83,7 +73,7 @@ namespace EmployeeMaster
         //daumtavrebeli dzebnis algoritmi
         public void Table_Search(string Key_Word, string Target_Column)
         {
-            for (int i = 0; i < Column_Names.Count; i++)
+            for (int i = 0; i < columns.column_names.Count; i++)
             {
                 if (Target_Column == Column_Type[i].Item1)
                 {
