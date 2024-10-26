@@ -32,7 +32,8 @@ namespace GroupProject_v001
         public TextBox input;
         public Label Errorlabel;
 
-        public Button Savebutton;
+        public Label InputLabel;
+
 
         public Departments()
         {
@@ -98,6 +99,13 @@ namespace GroupProject_v001
             input.TextChanged += Input_TextChanged;
             this.Controls.Add(input);
             groupBox1.Controls.Add(input);
+            //label for inputbox
+            InputLabel = new Label();
+            InputLabel.Location = new Point(48, 295);
+            InputLabel.Size = new Size(200, 50);
+            InputLabel.Text = "input Department Name";
+            this.Controls.Add(InputLabel);
+            groupBox1.Controls.Add(InputLabel);
 
             // label for any errors
             Errorlabel = new Label();
