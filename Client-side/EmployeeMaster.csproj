@@ -85,11 +85,11 @@
     <Compile Include="NewPasswordForm.Designer.cs">
       <DependentUpon>NewPasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewUserManagment.cs">
+    <Compile Include="NewUserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewUserManagment.Designer.cs">
-      <DependentUpon>NewUserManagment.cs</DependentUpon>
+    <Compile Include="NewUserManagement.Designer.cs">
+      <DependentUpon>NewUserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,8 +117,8 @@
     <EmbeddedResource Include="NewPasswordForm.resx">
       <DependentUpon>NewPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewUserManagment.resx">
-      <DependentUpon>NewUserManagment.cs</DependentUpon>
+    <EmbeddedResource Include="NewUserManagement.resx">
+      <DependentUpon>NewUserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

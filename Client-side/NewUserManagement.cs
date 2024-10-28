@@ -18,20 +18,20 @@ namespace Registration
         public string user_name;
     }
 
-    public partial class NewUserManagment : Form
+    public partial class NewUserManagement : Form
     {
         public static DataTable user_data_table;
         public static TextBox search_text_box;
         public static DataGridView user_data_grid_view;
         public static ComboBox search_option_combo_box;
 
-        public NewUserManagment()
+        public NewUserManagement()
         {
             InitializeComponent();
         }
 
 
-        public void NewUserManagment_Load(object sender, EventArgs e)
+        public void NewUserManagement_Load(object sender, EventArgs e)
         {
             InitializeComponent();
 
@@ -163,7 +163,5 @@ namespace Registration
                 user_data_grid_view.DataSource = user_data_table;
             }
         }
-
-
     }
 }
