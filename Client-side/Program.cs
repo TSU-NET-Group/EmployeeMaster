@@ -22,7 +22,7 @@ namespace EmployeeMaster
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Departments());
+            Application.Run(new Department.Departments());
         }
     }
 }
