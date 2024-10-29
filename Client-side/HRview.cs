@@ -19,11 +19,14 @@ namespace EmployeeMaster
             HR_module module=new HR_module();
 
             module.Column_Type_Init(
-                new List<Tuple<string, Type>>{ new Tuple<string, Type>("saxeli", typeof(string)),
-                    new Tuple<string, Type>("ID", typeof(int)) }
-                );
+                columns.column_names
+                ) ;
+
+
+
             module.Table_Init();
             dataGridView3.DataSource = module.Employee_Table;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

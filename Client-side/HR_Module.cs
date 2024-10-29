@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 
-
+using Registration;
 
 
 namespace EmployeeMaster
@@ -18,6 +18,8 @@ namespace EmployeeMaster
             new DataColumn("user_mail",typeof(string)),
             new DataColumn("user_phone",typeof(string)),
             new DataColumn("user_name",typeof(string)),
+            new DataColumn("user_department",typeof(string)),
+            new DataColumn("user_position",typeof(string)),
             };    
     }
 
@@ -32,13 +34,13 @@ namespace EmployeeMaster
         public DataTable Employee_Table;
         DataTable Result_Table;
 
-        
 
-        List<Tuple<string,Type>> Column_Type;
 
+        //List<Tuple<string,Type>> Column_Type;
+        List<DataColumn> Column_Type;
 
         //droibiti svetebis inicializaciis metodi
-        public void Column_Type_Init(List<Tuple<string,Type>> Column_type)
+        public void Column_Type_Init(List<DataColumn> Column_type)
         {
             Column_Type = Column_type;
         }
@@ -50,6 +52,7 @@ namespace EmployeeMaster
         public void Table_Init()
         {
             Employee_Table = new DataTable();
+            /*
             for (int i = 0; i < Column_Type.Count; i++)
             {
                 if (Column_Type[i].Item2 == typeof(string))
@@ -61,9 +64,22 @@ namespace EmployeeMaster
                     Employee_Table.Columns.Add(Column_Type[i].Item1, typeof(int));
                 }
             }
+            */
+            for (int i = 0; i < Column_Type.Count; i++)
+            {
+                
+                Employee_Table.Columns.Add(Column_Type[i]);
+            }
 
 
+            //TODO: SHENGE FIX THIS !!!!!!!!!!
+            Employees = NewUserManagement.user_data_table;
 
+            for (int i = 0; i < Employees.Rows.Count; i++)
+            {
+                //if (Employees.Rows[i].) 
+                    Employee_Table.Rows.Add(Employees.Rows[i]);
+            }
 
 
 
@@ -71,13 +87,13 @@ namespace EmployeeMaster
         }
 
         //daumtavrebeli dzebnis algoritmi
-        public void Table_Search(string Key_Word, string Target_Column)
+        public void Table_Search(string Key_Word, DataColumn Target_Column)
         {
             for (int i = 0; i < columns.column_names.Count; i++)
             {
-                if (Target_Column == Column_Type[i].Item1)
+                if (Target_Column.ColumnName == Column_Type[i].ColumnName)
                 {
-                    if (Column_Type[i].Item2 == typeof(int)) {
+                    if (Column_Type[i].DataType == typeof(int)) {
                         bool Conversion = Int32.TryParse(Key_Word, out int number);
 
 
