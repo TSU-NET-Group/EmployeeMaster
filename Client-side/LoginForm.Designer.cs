@@ -34,7 +34,8 @@ namespace EmployeeMaster
             this.btn_logIn = new System.Windows.Forms.Button();
             this.input_ID = new System.Windows.Forms.TextBox();
             this.input_password = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.loginGroupBox = new System.Windows.Forms.GroupBox();
+            this.btn_registration = new System.Windows.Forms.Button();
             this.label_message = new System.Windows.Forms.Label();
             this.radioBtnForeigner = new System.Windows.Forms.RadioButton();
             this.radioBtnGeorgian = new System.Windows.Forms.RadioButton();
@@ -44,8 +45,7 @@ namespace EmployeeMaster
             this.label_password = new System.Windows.Forms.Label();
             this.languageSelector = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_registration = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.loginGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_logIn
@@ -81,27 +81,38 @@ namespace EmployeeMaster
             this.input_password.TabIndex = 3;
             this.input_password.UseSystemPasswordChar = true;
             // 
-            // groupBox1
+            // loginGroupBox
             // 
-            this.groupBox1.Controls.Add(this.btn_registration);
-            this.groupBox1.Controls.Add(this.label_message);
-            this.groupBox1.Controls.Add(this.radioBtnForeigner);
-            this.groupBox1.Controls.Add(this.radioBtnGeorgian);
-            this.groupBox1.Controls.Add(this.label_errorMessage);
-            this.groupBox1.Controls.Add(this.label_forgotPassWord);
-            this.groupBox1.Controls.Add(this.label_ID);
-            this.groupBox1.Controls.Add(this.label_password);
-            this.groupBox1.Controls.Add(this.input_ID);
-            this.groupBox1.Controls.Add(this.input_password);
-            this.groupBox1.Controls.Add(this.btn_logIn);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 59);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(539, 378);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "ავტორიზაცია";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.loginGroupBox.Controls.Add(this.btn_registration);
+            this.loginGroupBox.Controls.Add(this.label_message);
+            this.loginGroupBox.Controls.Add(this.radioBtnForeigner);
+            this.loginGroupBox.Controls.Add(this.radioBtnGeorgian);
+            this.loginGroupBox.Controls.Add(this.label_errorMessage);
+            this.loginGroupBox.Controls.Add(this.label_forgotPassWord);
+            this.loginGroupBox.Controls.Add(this.label_ID);
+            this.loginGroupBox.Controls.Add(this.label_password);
+            this.loginGroupBox.Controls.Add(this.input_ID);
+            this.loginGroupBox.Controls.Add(this.input_password);
+            this.loginGroupBox.Controls.Add(this.btn_logIn);
+            this.loginGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginGroupBox.Location = new System.Drawing.Point(12, 59);
+            this.loginGroupBox.Name = "loginGroupBox";
+            this.loginGroupBox.Size = new System.Drawing.Size(539, 378);
+            this.loginGroupBox.TabIndex = 6;
+            this.loginGroupBox.TabStop = false;
+            this.loginGroupBox.Text = "ავტორიზაცია";
+            this.loginGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btn_registration
+            // 
+            this.btn_registration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btn_registration.Location = new System.Drawing.Point(162, 265);
+            this.btn_registration.Name = "btn_registration";
+            this.btn_registration.Size = new System.Drawing.Size(131, 33);
+            this.btn_registration.TabIndex = 12;
+            this.btn_registration.Text = "რეგისტრაცია";
+            this.btn_registration.UseVisualStyleBackColor = true;
+            this.btn_registration.Click += new System.EventHandler(this.btn_registration_Click);
             // 
             // label_message
             // 
@@ -120,7 +131,7 @@ namespace EmployeeMaster
             this.radioBtnForeigner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioBtnForeigner.Location = new System.Drawing.Point(288, 58);
             this.radioBtnForeigner.Name = "radioBtnForeigner";
-            this.radioBtnForeigner.Size = new System.Drawing.Size(157, 20);
+            this.radioBtnForeigner.Size = new System.Drawing.Size(158, 20);
             this.radioBtnForeigner.TabIndex = 10;
             this.radioBtnForeigner.TabStop = true;
             this.radioBtnForeigner.Text = "უცხოეთის მოქალაქე";
@@ -132,7 +143,7 @@ namespace EmployeeMaster
             this.radioBtnGeorgian.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioBtnGeorgian.Location = new System.Drawing.Point(162, 58);
             this.radioBtnGeorgian.Name = "radioBtnGeorgian";
-            this.radioBtnGeorgian.Size = new System.Drawing.Size(94, 20);
+            this.radioBtnGeorgian.Size = new System.Drawing.Size(95, 20);
             this.radioBtnGeorgian.TabIndex = 9;
             this.radioBtnGeorgian.TabStop = true;
             this.radioBtnGeorgian.Text = "ქართველი";
@@ -157,7 +168,7 @@ namespace EmployeeMaster
             this.label_forgotPassWord.Location = new System.Drawing.Point(280, 225);
             this.label_forgotPassWord.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_forgotPassWord.Name = "label_forgotPassWord";
-            this.label_forgotPassWord.Size = new System.Drawing.Size(165, 16);
+            this.label_forgotPassWord.Size = new System.Drawing.Size(166, 16);
             this.label_forgotPassWord.TabIndex = 6;
             this.label_forgotPassWord.Text = "დაგავიწყდა პაროლი???";
             this.label_forgotPassWord.Click += new System.EventHandler(this.label_forgotPassWord_Click);
@@ -208,17 +219,6 @@ namespace EmployeeMaster
             this.label1.TabIndex = 8;
             this.label1.Text = "ენა:";
             // 
-            // btn_registration
-            // 
-            this.btn_registration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_registration.Location = new System.Drawing.Point(162, 265);
-            this.btn_registration.Name = "btn_registration";
-            this.btn_registration.Size = new System.Drawing.Size(131, 33);
-            this.btn_registration.TabIndex = 12;
-            this.btn_registration.Text = "რეგისტრაცია";
-            this.btn_registration.UseVisualStyleBackColor = true;
-            this.btn_registration.Click += new System.EventHandler(this.btn_registration_Click);
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,13 +226,13 @@ namespace EmployeeMaster
             this.ClientSize = new System.Drawing.Size(565, 449);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.languageSelector);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.loginGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.loginGroupBox.ResumeLayout(false);
+            this.loginGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,7 +243,7 @@ namespace EmployeeMaster
         private System.Windows.Forms.Button btn_logIn;
         private System.Windows.Forms.TextBox input_ID;
         private System.Windows.Forms.TextBox input_password;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox loginGroupBox;
         private System.Windows.Forms.Label label_ID;
         private System.Windows.Forms.Label label_password;
         private System.Windows.Forms.Label label_forgotPassWord;
