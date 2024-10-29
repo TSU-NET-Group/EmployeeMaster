@@ -13,6 +13,7 @@ using EmployeeMaster;
 using System.IO;
 using System.Xml;
 using System.Data.Common;
+using Departaments;
 
 namespace GroupProject_v001
 {
@@ -34,7 +35,7 @@ namespace GroupProject_v001
 
         public Label InputLabel;
 
-
+        Departament MyDep;
         public Departments()
         {
             InitializeComponent();
@@ -115,6 +116,7 @@ namespace GroupProject_v001
             this.Controls.Add(Errorlabel);
             groupBox1.Controls.Add(Errorlabel);
 
+            MyDep = new Departament(); 
            
             string path = Application.StartupPath + @"\MyGrid.xml";
 
@@ -175,13 +177,14 @@ namespace GroupProject_v001
         // to remove department 
         private void Departmentsub_Click(object sender, EventArgs e)
         {
-            int index1 = 0;
-            string DepartmentName = input.Text;
+            int index1;
+            MyDep.set_name(input.Text);
+            string departmentname = MyDep.get_name();
 
-            if (!string.IsNullOrEmpty(DepartmentName))
+            if (!string.IsNullOrEmpty(departmentname))
             {
                 //delere wiht textbox 
-                DataGridViewColumn columnToRemove = dataGridView1.Columns[DepartmentName];
+                DataGridViewColumn columnToRemove = dataGridView1.Columns[departmentname];
                 if (columnToRemove != null)
                 {
                     index1 = columnToRemove.Index;
@@ -189,17 +192,9 @@ namespace GroupProject_v001
                 }
                 else
                 {
-                    MessageBox.Show($"Column '{DepartmentName}' does not exist.");
+                    MessageBox.Show($"Column '{departmentname}' does not exist.");
+                    Errorlabel.Text = "selected column not exists";
                 }
-
-                if (dataGridView1.CurrentCell != null)
-                {
-                    //with mouse deleting
-                    index = dataGridView1.CurrentCell.ColumnIndex;
-                    dataGridView1.Columns.RemoveAt(index);
-                }
-
-
             }
             else
             {
@@ -209,7 +204,7 @@ namespace GroupProject_v001
                     index = dataGridView1.CurrentCell.ColumnIndex;
                     dataGridView1.Columns.RemoveAt(index);
                 }
-                else { MessageBox.Show($"enter valid '{DepartmentName}' "); }
+                else { MessageBox.Show($"enter valid '{MyDep.get_name()}' "); }
 
             }
         }
@@ -217,11 +212,11 @@ namespace GroupProject_v001
         private void Departmentadd_Click(object sender, EventArgs e)
         {
 
-            string DepartmentName = input.Text;
+            MyDep.set_name(input.Text);
 
-            if (!string.IsNullOrEmpty(DepartmentName))
+            if (!string.IsNullOrEmpty(MyDep.get_name()))
             {
-                if (dataGridView1.Columns.Contains(DepartmentName))
+                if (dataGridView1.Columns.Contains(MyDep.get_name()))
                 {
                     Errorlabel.Text = "this Department already exists type different name";
                     return;
@@ -229,8 +224,8 @@ namespace GroupProject_v001
 
                 Errorlabel.Text = string.Empty;
                 DataGridViewTextBoxColumn textColumn = new DataGridViewTextBoxColumn();
-                textColumn.HeaderText = DepartmentName;
-                textColumn.Name = DepartmentName;
+                textColumn.HeaderText = MyDep.get_name();
+                textColumn.Name = MyDep.get_name();
 
                 // Add the column to the DataGridView
                 dataGridView1.Columns.Add(textColumn);
@@ -270,19 +265,19 @@ namespace GroupProject_v001
                 for (int i = 0; i < xmlColumnNodes.Count; i++)
                 {
                     //checking some nodes from xml which is already typed there 
-                    string columnName = xmlColumnNodes[i]["Name"]?.InnerText.Trim();
+                    MyDep.set_name(xmlColumnNodes[i]["Name"]?.InnerText.Trim());
                     string headerText = xmlColumnNodes[i]["Headertext"]?.InnerText.Trim();
                     int displayIndex = int.Parse(xmlColumnNodes[i]["displayindex"]?.InnerText.Trim() ?? "0");
                     bool visible = Convert.ToBoolean(xmlColumnNodes[i]["visible"]?.InnerText.Trim());
 
                     // Check if the column already exists
-                    DataGridViewColumn column = dgv.Columns[columnName];
+                    DataGridViewColumn column = dgv.Columns[MyDep.get_name()];
                     if (column == null)
                     {
                         // Create a new column if it doesn't exist
                         column = new DataGridViewTextBoxColumn
                         {
-                            Name = columnName,
+                            Name = MyDep.get_name(),
                             HeaderText = headerText,
                             Visible = visible
                         };

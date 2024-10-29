@@ -75,6 +75,9 @@ namespace EmployeeMaster
                 }
             }
             */
+
+            throw new NotImplementedException();
+
             for (int i = 0; i < Column_Type.Count; i++)
             { 
                 Employee_Table.Columns.Add(Column_Type[i]);

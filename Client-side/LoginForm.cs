@@ -121,6 +121,46 @@ namespace EmployeeMaster
 
         private void event_forgotOnClick(object sender, MouseEventArgs e)
         {
+            // ახალი პაროლის შესანახი ადგილი
+
+            TextBox newPassword = new TextBox();
+            newPassword.Location = new Point(btn_logIn.Location.X + 50, btn_logIn.Location.Y);
+            newPassword.Width = 100;
+            TextBox repeatPassword = new TextBox();
+            repeatPassword.Location = new Point(btn_logIn.Location.X+50, btn_logIn.Location.Y + 50);
+            repeatPassword.Width = 100;
+            newPassword.PasswordChar = '*';
+            repeatPassword.PasswordChar = '*';
+
+
+            Label newPasswordLabel = new Label();
+            Label repeatPassswordLabel = new Label();
+
+
+            newPasswordLabel.Location =new Point(20, btn_logIn.Location.Y);
+            newPasswordLabel.Text = "ახალი პაროლი:";
+            newPasswordLabel.AutoSize = true;
+            newPasswordLabel.Font = new Font("Arial", 14);
+
+
+            repeatPassswordLabel.Location = new Point(20, btn_logIn.Location.Y + 50 );
+            repeatPassswordLabel.Text = "გაიმეორე პაროლი:";
+            repeatPassswordLabel.AutoSize = true;
+            repeatPassswordLabel.Font = new Font("Arial", 14);
+
+
+            btn_logIn.Location = new Point(btn_logIn.Location.X, btn_logIn.Location.Y + 100);
+            loginGroupBox.Controls.Remove(btn_registration);
+            loginGroupBox.Controls.Remove(label_forgotPassWord);
+
+
+
+
+            loginGroupBox.Controls.Add(newPassword);
+            loginGroupBox.Controls.Add(repeatPassword);
+            loginGroupBox.Controls.Add(newPasswordLabel);
+            loginGroupBox.Controls.Add(repeatPassswordLabel);
+
             // შედეგად გაიხსნება პაროლის აღდგენის ფორმა, ხოლო მთავარი ფორმა დროებით დაიმალება
             Form_forgotPassword form = new Form_forgotPassword();
             this.Hide();
