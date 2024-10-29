@@ -162,10 +162,10 @@ namespace EmployeeMaster
             loginGroupBox.Controls.Add(repeatPassswordLabel);
 
             // შედეგად გაიხსნება პაროლის აღდგენის ფორმა, ხოლო მთავარი ფორმა დროებით დაიმალება
-            /*Form_forgotPassword form = new Form_forgotPassword();
+            Form_forgotPassword form = new Form_forgotPassword();
             this.Hide();
             form.mainForm = this;
-            form.Show();*/
+            form.Show();
         }
 
         private void event_langSelected(object sender, EventArgs e)
