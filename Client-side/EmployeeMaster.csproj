@@ -91,6 +91,7 @@
     <Compile Include="NewUserManagement.Designer.cs">
       <DependentUpon>NewUserManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordVerifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.cs">

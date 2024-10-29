@@ -35,6 +35,7 @@ namespace GroupProject_v001
             this.updatePassword = new System.Windows.Forms.Label();
             this.newPasswordButton = new System.Windows.Forms.Button();
             this.PasswordLabel = new System.Windows.Forms.Label();
+            this.label_errorMessage = new System.Windows.Forms.Label();
             this.newPasswordBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,8 +43,10 @@ namespace GroupProject_v001
             // 
             this.passwordOnce.Location = new System.Drawing.Point(95, 44);
             this.passwordOnce.Name = "passwordOnce";
+            this.passwordOnce.PasswordChar = '*';
             this.passwordOnce.Size = new System.Drawing.Size(146, 20);
             this.passwordOnce.TabIndex = 0;
+            this.passwordOnce.UseSystemPasswordChar = true;
             // 
             // passwordTwice
             // 
@@ -51,9 +54,11 @@ namespace GroupProject_v001
             this.passwordTwice.Name = "passwordTwice";
             this.passwordTwice.Size = new System.Drawing.Size(146, 20);
             this.passwordTwice.TabIndex = 1;
+            this.passwordTwice.UseSystemPasswordChar = true;
             // 
             // newPasswordBox
             // 
+            this.newPasswordBox.Controls.Add(this.label_errorMessage);
             this.newPasswordBox.Controls.Add(this.updatePassword);
             this.newPasswordBox.Controls.Add(this.newPasswordButton);
             this.newPasswordBox.Controls.Add(this.PasswordLabel);
@@ -61,7 +66,7 @@ namespace GroupProject_v001
             this.newPasswordBox.Controls.Add(this.passwordOnce);
             this.newPasswordBox.Location = new System.Drawing.Point(110, 34);
             this.newPasswordBox.Name = "newPasswordBox";
-            this.newPasswordBox.Size = new System.Drawing.Size(352, 145);
+            this.newPasswordBox.Size = new System.Drawing.Size(352, 193);
             this.newPasswordBox.TabIndex = 2;
             this.newPasswordBox.TabStop = false;
             this.newPasswordBox.Text = "Password Recovery";
@@ -94,11 +99,20 @@ namespace GroupProject_v001
             this.PasswordLabel.TabIndex = 2;
             this.PasswordLabel.Text = "new Password";
             // 
+            // label_errorMessage
+            // 
+            this.label_errorMessage.AutoSize = true;
+            this.label_errorMessage.ForeColor = System.Drawing.Color.Red;
+            this.label_errorMessage.Location = new System.Drawing.Point(115, 158);
+            this.label_errorMessage.Name = "label_errorMessage";
+            this.label_errorMessage.Size = new System.Drawing.Size(0, 13);
+            this.label_errorMessage.TabIndex = 3;
+            // 
             // NewPasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 207);
+            this.ClientSize = new System.Drawing.Size(595, 246);
             this.Controls.Add(this.newPasswordBox);
             this.Name = "NewPasswordForm";
             this.Text = "newPassword";
@@ -118,5 +132,6 @@ namespace GroupProject_v001
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Label updatePassword;
         private System.Windows.Forms.Button newPasswordButton;
+        private System.Windows.Forms.Label label_errorMessage;
     }
 }
