@@ -22,10 +22,15 @@ namespace EmployeeMaster
                 columns.column_names
                 ) ;
 
-
-
+            
+            //Search_Option
             module.Table_Init();
-            dataGridView3.DataSource = module.Employee_Table;
+            dataGridView3.DataSource = module.Result_Table;
+            for (int i = 0; i < module.Column_Type.Count; i++)
+            {
+                Search_Option1.Items.Add(module.Column_Type[0]);
+            }
+            
 
         }
 
@@ -123,6 +128,11 @@ namespace EmployeeMaster
         {
             Environment.Exit(0);
             Application.Exit();
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

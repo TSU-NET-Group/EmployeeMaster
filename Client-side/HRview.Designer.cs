@@ -44,6 +44,7 @@ namespace EmployeeMaster
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Search_Option = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Add_Employee = new System.Windows.Forms.TabPage();
             this.Schedule_Manager = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.Daily = new System.Windows.Forms.TabPage();
@@ -76,7 +77,9 @@ namespace EmployeeMaster
             this.N13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Add_Employee = new System.Windows.Forms.TabPage();
+            this.Positions = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.HR_CMS.SuspendLayout();
             this.Employee_List.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -133,6 +136,7 @@ namespace EmployeeMaster
             // 
             // Department_1
             // 
+            this.Department_1.Controls.Add(this.comboBox3);
             this.Department_1.Controls.Add(this.dataGridView3);
             this.Department_1.Controls.Add(this.Search_Option2);
             this.Department_1.Controls.Add(this.textBox3);
@@ -182,6 +186,7 @@ namespace EmployeeMaster
             // 
             // Department_2
             // 
+            this.Department_2.Controls.Add(this.Positions);
             this.Department_2.Controls.Add(this.dataGridView2);
             this.Department_2.Controls.Add(this.Search_Option1);
             this.Department_2.Controls.Add(this.textBox2);
@@ -208,10 +213,6 @@ namespace EmployeeMaster
             // Search_Option1
             // 
             this.Search_Option1.FormattingEnabled = true;
-            this.Search_Option1.Items.AddRange(new object[] {
-            "Name/Surname",
-            "ID",
-            "Email"});
             this.Search_Option1.Location = new System.Drawing.Point(233, 486);
             this.Search_Option1.Name = "Search_Option1";
             this.Search_Option1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -231,6 +232,7 @@ namespace EmployeeMaster
             // 
             // Department_3
             // 
+            this.Department_3.Controls.Add(this.comboBox4);
             this.Department_3.Controls.Add(this.dataGridView1);
             this.Department_3.Controls.Add(this.Search_Option);
             this.Department_3.Controls.Add(this.textBox1);
@@ -276,6 +278,16 @@ namespace EmployeeMaster
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(224, 20);
             this.textBox1.TabIndex = 3;
+            // 
+            // Add_Employee
+            // 
+            this.Add_Employee.Location = new System.Drawing.Point(4, 22);
+            this.Add_Employee.Name = "Add_Employee";
+            this.Add_Employee.Padding = new System.Windows.Forms.Padding(3);
+            this.Add_Employee.Size = new System.Drawing.Size(988, 541);
+            this.Add_Employee.TabIndex = 3;
+            this.Add_Employee.Text = "Add Employee";
+            this.Add_Employee.UseVisualStyleBackColor = true;
             // 
             // Schedule_Manager
             // 
@@ -534,15 +546,30 @@ namespace EmployeeMaster
             this.N15.HeaderText = "15";
             this.N15.Name = "N15";
             // 
-            // Add_Employee
+            // Positions
             // 
-            this.Add_Employee.Location = new System.Drawing.Point(4, 22);
-            this.Add_Employee.Name = "Add_Employee";
-            this.Add_Employee.Padding = new System.Windows.Forms.Padding(3);
-            this.Add_Employee.Size = new System.Drawing.Size(988, 541);
-            this.Add_Employee.TabIndex = 3;
-            this.Add_Employee.Text = "Add Employee";
-            this.Add_Employee.UseVisualStyleBackColor = true;
+            this.Positions.FormattingEnabled = true;
+            this.Positions.Location = new System.Drawing.Point(438, 486);
+            this.Positions.Name = "Positions";
+            this.Positions.Size = new System.Drawing.Size(236, 21);
+            this.Positions.TabIndex = 8;
+            this.Positions.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(439, 484);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(236, 21);
+            this.comboBox3.TabIndex = 9;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(438, 485);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(236, 21);
+            this.comboBox4.TabIndex = 9;
             // 
             // HRview
             // 
@@ -628,6 +655,9 @@ namespace EmployeeMaster
         private System.Windows.Forms.DataGridViewTextBoxColumn N14;
         private System.Windows.Forms.DataGridViewTextBoxColumn N15;
         private System.Windows.Forms.TabPage Add_Employee;
+        private System.Windows.Forms.ComboBox Positions;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox4;
     }
 }
 
