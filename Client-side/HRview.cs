@@ -19,11 +19,19 @@ namespace EmployeeMaster
             HR_module module=new HR_module();
 
             module.Column_Type_Init(
-                new List<Tuple<string, Type>>{ new Tuple<string, Type>("saxeli", typeof(string)),
-                    new Tuple<string, Type>("ID", typeof(int)) }
-                );
+                columns.column_names
+                ) ;
+
+            
+            //Search_Option
             module.Table_Init();
-            dataGridView3.DataSource = module.Employee_Table;
+            dataGridView3.DataSource = module.Result_Table;
+            for (int i = 0; i < module.Column_Type.Count; i++)
+            {
+                Search_Option1.Items.Add(module.Column_Type[0]);
+            }
+            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -120,6 +128,11 @@ namespace EmployeeMaster
         {
             Environment.Exit(0);
             Application.Exit();
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

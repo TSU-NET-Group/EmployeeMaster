@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+//using System.Windows.Forms;
 
-
+using Registration;
 
 
 namespace EmployeeMaster
@@ -18,38 +19,50 @@ namespace EmployeeMaster
             new DataColumn("user_mail",typeof(string)),
             new DataColumn("user_phone",typeof(string)),
             new DataColumn("user_name",typeof(string)),
+            new DataColumn("user_department",typeof(string)),
+            new DataColumn("user_position",typeof(string)),
             };    
     }
 
     
 
 
-    class HR_module
+    public class HR_module
     {
 
-        DataTable Employees;
+        //DataTable Employees;
 
         public DataTable Employee_Table;
-        DataTable Result_Table;
+        public DataTable Department_Table;
+        public DataTable Position_Table;
+        public DataTable Result_Table;
 
-        
 
-        List<Tuple<string,Type>> Column_Type;
 
+        //List<Tuple<string,Type>> Column_Type;
+        public List<DataColumn> Column_Type;
 
         //droibiti svetebis inicializaciis metodi
-        public void Column_Type_Init(List<Tuple<string,Type>> Column_type)
+        public void Column_Type_Init(List<DataColumn> Column_type)
         {
             Column_Type = Column_type;
+
         }
 
         
 
 
         //inicializacia table-is
+
+
+        //needs departments list to be fully complete
         public void Table_Init()
         {
             Employee_Table = new DataTable();
+            Position_Table = new DataTable();
+            Department_Table= new DataTable();
+            Result_Table= new DataTable();
+            /*
             for (int i = 0; i < Column_Type.Count; i++)
             {
                 if (Column_Type[i].Item2 == typeof(string))
@@ -61,9 +74,34 @@ namespace EmployeeMaster
                     Employee_Table.Columns.Add(Column_Type[i].Item1, typeof(int));
                 }
             }
+            */
+
+            throw new NotImplementedException();
+
+            for (int i = 0; i < Column_Type.Count; i++)
+            { 
+                Employee_Table.Columns.Add(Column_Type[i]);
+                
+            }
+             
+
+            //TODO: SHENGE FIX THIS !!!!!!!!!!
 
 
+            // -- shenge:
+            //needs data base of users to already exist,
+            //without it will always result in an error since there is no user database to work with
+            //also i need department list, so that ican load it by department
+            //right now this just throws in all employees
 
+
+            //Employees = NewUserManagement.user_data_table;
+
+            for (int i = 0; i < NewUserManagement.user_data_table.Rows.Count; i++)
+            {
+                //if (Employees.Rows[i].) 
+                    Employee_Table.Rows.Add(NewUserManagement.user_data_table.Rows[i]);
+            }
 
 
 
@@ -71,32 +109,102 @@ namespace EmployeeMaster
         }
 
         //daumtavrebeli dzebnis algoritmi
-        public void Table_Search(string Key_Word, string Target_Column)
+        public void Table_Search(string Key_Word, DataColumn Target_Column)
         {
-            for (int i = 0; i < columns.column_names.Count; i++)
+            //for (int i = 0; i < columns.column_names.Count; i++)
+            //{
+            //    if (Target_Column.ColumnName == Column_Type[i].ColumnName)
+            //    {
+            //        if (Column_Type[i].DataType == typeof(int)) {
+            //            bool Conversion = Int32.TryParse(Key_Word, out int number);
+
+            //            for (int k = 0; k < Position_Table.Rows.Count; k++)
+            //            {
+
+            //            }
+
+            //        }
+            //        else
+            //        {
+
+
+            //        }
+            //    }
+            //}
+            int column_index=-1;
+            DataTable temp_table=new DataTable();
+            for (int i = 0; i < Column_Type.Count; i++)
             {
-                if (Target_Column == Column_Type[i].Item1)
+                if (Target_Column == Column_Type[i]) column_index = i;
+            }
+            for (int i = 0; i < Position_Table.Rows.Count; i++)
+            {
+                if (column_index == -1) throw new Exception("attempting to search in invalid column");
+                if (Key_Word == Position_Table.Rows[i][column_index].ToString())
                 {
-                    if (Column_Type[i].Item2 == typeof(int)) {
-                        bool Conversion = Int32.TryParse(Key_Word, out int number);
-
-
-
-                    }
-                    else
-                    {
-
-
-                    }
+                    temp_table.Rows.Add(Position_Table.Rows[i]);
                 }
             }
+            Result_Table = temp_table;
         }
 
-        //needs row inserter method for adding employees to tables, may require employee class first
+        // in order for final table to be loaded these functions will be called in the following order:
+        // 1) table_init 2) Load_By_department 3) Load_By_Position
+        // both department and position will have a  member called "all" so that if needed you can view
+        // all employyes in a single datatable
+
+        public void Load_By_Position(string position)
+        {
+            int column_index = -1;
+            DataTable temp_table = new DataTable();
+            for (int i = 0; i < Column_Type.Count; i++)
+            {
+                if ("user_position" == Column_Type[i].Caption) column_index = i;
+            }
+
+            for (int i = 0; i < Department_Table.Rows.Count; i++)
+            {
+                if (column_index == -1) throw new Exception("attempting to search in invalid column");
+                if (position == Department_Table.Rows[i][column_index].ToString())
+                {
+                    temp_table.Rows.Add(Position_Table.Rows[i]);
+                }
+            }
+
+            Position_Table = temp_table;
+        }
+
+        public void Load_By_Department(string department_name)
+        {
+
+            int column_index = -1;
+            DataTable temp_table = new DataTable();
+            for (int i = 0; i < Column_Type.Count; i++)
+            {
+                if ("user_department" == Column_Type[i].Caption) column_index = i;
+            }
+
+            for (int i = 0; i < Employee_Table.Rows.Count; i++)
+            {
+                if (column_index == -1) throw new Exception("attempting to search in invalid column");
+                if (department_name == Employee_Table.Rows[i][column_index].ToString())
+                {
+                    temp_table.Rows.Add(Position_Table.Rows[i]);
+                }
+            }
+            Department_Table = temp_table;
+        }
+
+
+        
         
 
     }
 
+
+    //these two classes may not be needed since i have been
+    //basically putting all the function in the parent class
+    //who needs hierarchy anyway???
     class Hr_Emp_CMS : HR_module
     {
         //module for managing employees

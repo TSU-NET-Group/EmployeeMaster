@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Department.cs" />
+    <Compile Include="DepartmentClass.cs" />
     <Compile Include="Departments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +92,7 @@
     <Compile Include="NewUserManagement.Designer.cs">
       <DependentUpon>NewUserManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordVerifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration.cs">
