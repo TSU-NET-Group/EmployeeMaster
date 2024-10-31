@@ -1,4 +1,4 @@
-﻿namespace GroupProject_v001
+﻿namespace Department
 {
     partial class Departments
     {

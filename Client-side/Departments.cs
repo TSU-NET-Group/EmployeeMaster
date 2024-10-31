@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-
-using EmployeeMaster;
 using System.IO;
+using System.Windows.Forms;
 using System.Xml;
-using System.Data.Common;
-using Departaments;
 
-namespace GroupProject_v001
+namespace Department
 {
     public partial class Departments : Form
     {
@@ -90,7 +79,7 @@ namespace GroupProject_v001
             groupBox1.Controls.Add(Departmentminus);
             groupBox1.Controls.Add(dataGridView1);
 
-          
+
 
 
             //text box to enter your department or positions
@@ -150,7 +139,8 @@ namespace GroupProject_v001
             }
         }
 
-       
+
+
 
         private void Input_TextChanged(object sender, EventArgs e)
         {
@@ -240,7 +230,7 @@ namespace GroupProject_v001
 
         }
 
-        
+
         private void FileReader(DataGridView dgv)
         {
 
@@ -293,9 +283,9 @@ namespace GroupProject_v001
                     // Set display index
                     column.DisplayIndex = displayIndex;
 
-                    
 
-                    
+
+
                 }
                 //checking each cellnode from rows  
                 foreach (XmlNode rowNode in xmlRowNodes)
@@ -321,7 +311,7 @@ namespace GroupProject_v001
                 }
             }
         }
-    
+
         // writing to file 
         private void FileWriter(DataGridView dgv)
         {
@@ -380,8 +370,8 @@ namespace GroupProject_v001
         {
 
         }
-    
-        
+
+
 
     }
 }
