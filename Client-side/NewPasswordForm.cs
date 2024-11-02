@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Registration;
+using Utility;
+
 namespace GroupProject_v001
 {
     public partial class NewPasswordForm : Form
@@ -33,7 +27,7 @@ namespace GroupProject_v001
             string password1 = passwordOnce.Text;
             string password2 = passwordTwice.Text;
 
-            if(password1.Trim() == "" || password2.Trim() == "")
+            if (password1.Trim() == "" || password2.Trim() == "")
             {
                 label_errorMessage.Text = "Fill both";
             }
@@ -41,7 +35,8 @@ namespace GroupProject_v001
             {
                 if (password1 == password2)
                 {
-                    if(PasswordVerifier.verifyPassword(password1, out string error)){
+                    if (PasswordVerifier.verifyPassword(password1, out string error))
+                    {
                         label_errorMessage.Text = "";
                         // აქ მოხდება ბექის მოდულის ფუნქცია ახალი პაროლით
                     }

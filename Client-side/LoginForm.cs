@@ -1,15 +1,9 @@
 ﻿using GroupProject_v001;
 using Registration;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Utility;
 
 namespace EmployeeMaster
 {
@@ -127,7 +121,7 @@ namespace EmployeeMaster
             newPassword.Location = new Point(btn_logIn.Location.X + 50, btn_logIn.Location.Y);
             newPassword.Width = 100;
             TextBox repeatPassword = new TextBox();
-            repeatPassword.Location = new Point(btn_logIn.Location.X+50, btn_logIn.Location.Y + 50);
+            repeatPassword.Location = new Point(btn_logIn.Location.X + 50, btn_logIn.Location.Y + 50);
             repeatPassword.Width = 100;
             newPassword.PasswordChar = '*';
             repeatPassword.PasswordChar = '*';
@@ -137,13 +131,13 @@ namespace EmployeeMaster
             Label repeatPassswordLabel = new Label();
 
 
-            newPasswordLabel.Location =new Point(20, btn_logIn.Location.Y);
+            newPasswordLabel.Location = new Point(20, btn_logIn.Location.Y);
             newPasswordLabel.Text = "ახალი პაროლი:";
             newPasswordLabel.AutoSize = true;
             newPasswordLabel.Font = new Font("Arial", 14);
 
 
-            repeatPassswordLabel.Location = new Point(20, btn_logIn.Location.Y + 50 );
+            repeatPassswordLabel.Location = new Point(20, btn_logIn.Location.Y + 50);
             repeatPassswordLabel.Text = "გაიმეორე პაროლი:";
             repeatPassswordLabel.AutoSize = true;
             repeatPassswordLabel.Font = new Font("Arial", 14);
