@@ -3,6 +3,7 @@ using Registration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,8 +24,25 @@ namespace EmployeeMaster
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+
+            
+
+            // example of how departments can be set up
+            Departament departament_1 = new Departament(
+                "software development",
+                new Position[]
+                {
+                    new Position("backend"),
+                    new Position("forntend"),
+                    new Position("UI"),
+                    new Position("designer"),
+                });
+
+            All_Departments.Departments.Add(departament_1);
+
       
             Application.Run(new LoginForm());
+            //Application.Run(new NewUserManagement());
         }
     }
 }

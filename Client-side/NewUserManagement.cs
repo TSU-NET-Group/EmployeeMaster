@@ -16,6 +16,8 @@ namespace Registration
         public string user_email;
         public int user_phone;
         public string user_name;
+        public string user_department;
+        public string user_position;
     }
 
     public partial class NewUserManagement : Form
@@ -71,10 +73,10 @@ namespace Registration
 
 
             // create dummy data for testing
-            user_struct user1 = new user_struct { id = 1, user_id = "555555", user_email = "sasa@gmail.com", user_phone = 45875489, user_name = "saba shengelia" };
-            user_struct user2 = new user_struct { id = 2, user_id = "8945884", user_email = "soso@gmail.com", user_phone = 84578423, user_name = "soso wiqarishvili" };
-            user_struct user3 = new user_struct { id = 3, user_id = "47894652", user_email = "jemal@gmail.com", user_phone = 84578423, user_name = "jemal kandavili" };
-            user_struct user4 = new user_struct { id = 4, user_id = "594884", user_email = "nino@gmail.com", user_phone = 7859234, user_name = "nino bugadze" };
+            user_struct user1 = new user_struct { id = 1, user_id = "555555", user_email = "sasa@gmail.com", user_phone = 45875489, user_name = "saba shengelia", user_department = "dasuftaveba", user_position = "senior damlagebeli" };
+            user_struct user2 = new user_struct { id = 2, user_id = "8945884", user_email = "soso@gmail.com", user_phone = 84578423, user_name = "soso wiqarishvili", user_department = "software development", user_position = "junior backend developer" };
+            user_struct user3 = new user_struct { id = 3, user_id = "47894652", user_email = "jemal@gmail.com", user_phone = 84578423, user_name = "jemal kandavili", user_department = "driver development", user_position = "manager" };
+            user_struct user4 = new user_struct { id = 4, user_id = "594884", user_email = "nino@gmail.com", user_phone = 7859234, user_name = "nino bugadze", user_department = "KGB", user_position = "CLASSIFIED" };
 
             // add the dummy data to the data table
             add_to_user_table(user1, user2, user3, user4);
@@ -87,29 +89,28 @@ namespace Registration
         {
             // set up a user data table
             user_data_table = new DataTable();
-            /*
-            user_data_table.Columns.Add("id", typeof(int));
-            user_data_table.Columns.Add("user_personal_id", typeof(string));
-            user_data_table.Columns.Add("user_mail", typeof(string));
-            user_data_table.Columns.Add("user_phone", typeof(string));
-            user_data_table.Columns.Add("user_name", typeof(string));
-            */
 
             user_data_table.Columns.AddRange(EmployeeMaster.columns.column_names.ToArray());
         }
 
+            
         public static void add_to_user_table(params user_struct[] _users)
         {
             // add every user to the data table
             foreach (user_struct _user in _users)
             {
-                user_data_table.Rows.Add(_user.id,
+                user_data_table.Rows.Add(
+                    _user.id,
                     _user.user_id,
                     _user.user_email,
                     _user.user_phone,
-                    _user.user_name);
+                    _user.user_name,
+                    _user.user_department,
+                    _user.user_position);
             }
         }
+
+
 
 
 

@@ -232,6 +232,7 @@ namespace Registration
             department_combo_box.DropDownStyle = ComboBoxStyle.DropDownList;
             department_combo_box.Items.Add("Department");
             department_combo_box.SelectedIndex = 0;
+            department_combo_box.Items.AddRange(All_Departments.Departments.ToArray());
             this.Controls.Add(department_combo_box);
 
 
