@@ -25,7 +25,7 @@ namespace Department
 
         public Label InputLabel;
 
-        Departament MyDep;
+        Departament MyDep = new Departament("",null);
         public Departments()
         {
             InitializeComponent();

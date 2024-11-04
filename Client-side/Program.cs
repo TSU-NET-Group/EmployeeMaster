@@ -1,4 +1,5 @@
-﻿using GroupProject_v001;
+﻿using Department;
+using GroupProject_v001;
 using Registration;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace EmployeeMaster
             All_Departments.Departments.Add(department_1);
 
       
-            Application.Run(new LoginForm());
+            Application.Run(new Departments());
             //Application.Run(new NewUserManagement());
         }
     }
