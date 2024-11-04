@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Client-side"
   ],
-  "SelectedNode": "\\EmployeeMaster.sln",
+  "SelectedNode": "\\Client-side\\NewPasswordForm.cs",
   "PreviewInSolutionExplorer": false
 }
