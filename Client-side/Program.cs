@@ -28,17 +28,17 @@ namespace EmployeeMaster
             
 
             // example of how departments can be set up
-            Departament departament_1 = new Departament(
+            Departament department_1 = new Departament(
                 "software development",
                 new Position[]
                 {
                     new Position("backend"),
-                    new Position("forntend"),
+                    new Position("frontend"),
                     new Position("UI"),
                     new Position("designer"),
                 });
 
-            All_Departments.Departments.Add(departament_1);
+            All_Departments.Departments.Add(department_1);
 
       
             Application.Run(new LoginForm());

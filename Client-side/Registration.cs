@@ -42,14 +42,17 @@ namespace Registration
 
         public Label ethnicity_label;
         public RadioButton georgian_radio_button;
-
         public RadioButton foreigner_radio_button;
+
         public Label department_label;
-
         public ComboBox department_combo_box;
-        public Button image_upload_button;
 
+        public Label position_label;
+        public ComboBox position_combo_box;
+
+        public Button image_upload_button;
         public PictureBox uploaded_image_picture_box;
+
         public Button register_button;
 
         public ComboBox Combobox_Language;
@@ -233,12 +236,29 @@ namespace Registration
             department_combo_box.Items.Add("Department");
             department_combo_box.SelectedIndex = 0;
             department_combo_box.Items.AddRange(All_Departments.Departments.ToArray());
+            department_combo_box.SelectedIndexChanged += new EventHandler(department_combo_box_SelectedIndexChanged);
             this.Controls.Add(department_combo_box);
 
 
+            // position_label
+            position_label = new Label();
+            position_label.Location = new Point(120, spacing * 9);
+            position_label.Text = "Position";
+            position_label.AutoSize = true;
+            this.Controls.Add(position_label);
+
+            // position_combo_box
+            position_combo_box = new ComboBox();
+            position_combo_box.Location = new Point(250, spacing * 9);
+            position_combo_box.Size = new Size(250, 25);
+            position_combo_box.DropDownStyle = ComboBoxStyle.DropDownList;
+            position_combo_box.Items.Add("Position");
+            position_combo_box.SelectedIndex = 0;
+            this.Controls.Add(position_combo_box);
+
             // upload image 
             image_upload_button = new Button();
-            image_upload_button.Location = new Point(250, spacing * 9);
+            image_upload_button.Location = new Point(250, spacing * 10);
             image_upload_button.Size = new Size(100, 50);
             image_upload_button.Text = "Upload\nImage";
             image_upload_button.Click += new EventHandler(image_upload_button_Click);
@@ -246,7 +266,7 @@ namespace Registration
 
             // Uploaded Image Picture Box
             uploaded_image_picture_box = new PictureBox();
-            uploaded_image_picture_box.Location = new Point(250, spacing * 10);
+            uploaded_image_picture_box.Location = new Point(250, spacing * 11);
             uploaded_image_picture_box.Size = new Size(200, 200);
             uploaded_image_picture_box.SizeMode = PictureBoxSizeMode.Zoom;
             uploaded_image_picture_box.Visible = false;
@@ -343,7 +363,10 @@ namespace Registration
             }
         }
 
-
+        private void department_combo_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TODO: display positions which are under selected department
+        }
 
         private void image_upload_button_Click(object sender, EventArgs e)
         {
