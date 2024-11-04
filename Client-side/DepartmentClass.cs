@@ -7,6 +7,18 @@ namespace Registration
     public static class All_Departments
     {
         public static List<Departament> Departments = new List<Departament>();
+
+
+        public static List<string> Department_Names()
+        {
+            List<string> names = new List<string>();
+            foreach (Departament departament in Departments)
+            {
+                names.Add(departament.Name);
+            }
+
+            return names;
+        }
     }
 
     public class Departament

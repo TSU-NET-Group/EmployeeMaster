@@ -42,7 +42,7 @@ namespace EmployeeMaster
             All_Departments.Departments.Add(department_1);
 
       
-            Application.Run(new Departments());
+            Application.Run(new RegistrationForm());
             //Application.Run(new NewUserManagement());
         }
     }
