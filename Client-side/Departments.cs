@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
+using Registration;
 
 namespace Department
 {
@@ -24,7 +25,7 @@ namespace Department
 
         public Label InputLabel;
 
-        Departament MyDep;
+        Departament MyDep = new Departament("",null);
         public Departments()
         {
             InitializeComponent();
@@ -105,7 +106,7 @@ namespace Department
             this.Controls.Add(Errorlabel);
             groupBox1.Controls.Add(Errorlabel);
 
-            MyDep = new Departament(); 
+            //MyDep = new Departament(); 
            
             string path = Application.StartupPath + @"\MyGrid.xml";
 
@@ -168,8 +169,8 @@ namespace Department
         private void Departmentsub_Click(object sender, EventArgs e)
         {
             int index1;
-            MyDep.set_name(input.Text);
-            string departmentname = MyDep.get_name();
+            MyDep = new Departament(input.Text, null);
+            string departmentname = MyDep.Name;
 
             if (!string.IsNullOrEmpty(departmentname))
             {
@@ -194,7 +195,7 @@ namespace Department
                     index = dataGridView1.CurrentCell.ColumnIndex;
                     dataGridView1.Columns.RemoveAt(index);
                 }
-                else { MessageBox.Show($"enter valid '{MyDep.get_name()}' "); }
+                else { MessageBox.Show($"enter valid '{MyDep.Name}' "); }
 
             }
         }
@@ -202,11 +203,11 @@ namespace Department
         private void Departmentadd_Click(object sender, EventArgs e)
         {
 
-            MyDep.set_name(input.Text);
+            MyDep.Name = input.Text;
 
-            if (!string.IsNullOrEmpty(MyDep.get_name()))
+            if (!string.IsNullOrEmpty(MyDep.Name))
             {
-                if (dataGridView1.Columns.Contains(MyDep.get_name()))
+                if (dataGridView1.Columns.Contains(MyDep.Name))
                 {
                     Errorlabel.Text = "this Department already exists type different name";
                     return;
@@ -214,8 +215,8 @@ namespace Department
 
                 Errorlabel.Text = string.Empty;
                 DataGridViewTextBoxColumn textColumn = new DataGridViewTextBoxColumn();
-                textColumn.HeaderText = MyDep.get_name();
-                textColumn.Name = MyDep.get_name();
+                textColumn.HeaderText = MyDep.Name;
+                textColumn.Name = MyDep.Name;
 
                 // Add the column to the DataGridView
                 dataGridView1.Columns.Add(textColumn);
@@ -255,19 +256,19 @@ namespace Department
                 for (int i = 0; i < xmlColumnNodes.Count; i++)
                 {
                     //checking some nodes from xml which is already typed there 
-                    MyDep.set_name(xmlColumnNodes[i]["Name"]?.InnerText.Trim());
+                    MyDep.Name = xmlColumnNodes[i]["Name"]?.InnerText.Trim();
                     string headerText = xmlColumnNodes[i]["Headertext"]?.InnerText.Trim();
                     int displayIndex = int.Parse(xmlColumnNodes[i]["displayindex"]?.InnerText.Trim() ?? "0");
                     bool visible = Convert.ToBoolean(xmlColumnNodes[i]["visible"]?.InnerText.Trim());
 
                     // Check if the column already exists
-                    DataGridViewColumn column = dgv.Columns[MyDep.get_name()];
+                    DataGridViewColumn column = dgv.Columns[MyDep.Name];
                     if (column == null)
                     {
                         // Create a new column if it doesn't exist
                         column = new DataGridViewTextBoxColumn
                         {
-                            Name = MyDep.get_name(),
+                            Name = MyDep.Name,
                             HeaderText = headerText,
                             Visible = visible
                         };
