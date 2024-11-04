@@ -1,32 +1,46 @@
-﻿using System;
+﻿
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Department
+namespace Registration
 {
-   
-        class Departament
+    public static class All_Departments
+    {
+        public static List<Departament> Departments = new List<Departament>();
+
+
+        public static List<string> Department_Names()
         {
-            private string name;
-
-
-            public Departament(string n, string p, int c)
+            List<string> names = new List<string>();
+            foreach (Departament departament in Departments)
             {
-
-                this.name = n;
-
+                names.Add(departament.Name);
             }
-            public Departament()
-            {
 
-            }
-            public string get_name() { return name; }
-
-
-            public void set_name(string n) { this.name = n; }
-
+            return names;
         }
-    
+    }
+
+    public class Departament
+    {
+        private string department_name;
+        private Position[] positions;
+
+
+
+        public Departament(string name, Position[] positions)
+        {
+            this.department_name = name;
+            this.positions = positions;
+        }
+
+        public string Name { get { return this.department_name; } set { this.department_name = value; } }
+        public Position[] Positions { get { return this.positions; } }
+
+
+        public override string ToString()
+        {
+            return this.department_name;
+        }
+    }
 }
