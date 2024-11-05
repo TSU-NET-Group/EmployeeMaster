@@ -44,6 +44,8 @@ namespace Registration
         public Label phone_number_label;
         public TextBox phone_number_text_box;
 
+        // TODO: ADD KEYCARD
+
         public Label ethnicity_label;
         public RadioButton georgian_radio_button;
         public RadioButton foreigner_radio_button;

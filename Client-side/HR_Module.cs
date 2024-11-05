@@ -14,11 +14,13 @@ namespace EmployeeMaster
     //all column names/types that exist in the structure
     public static class columns
     {
-        public static List<DataColumn> column_names = new List<DataColumn> { new DataColumn("id",typeof(int)),
+        public static List<DataColumn> column_names = new List<DataColumn> { 
+            new DataColumn("id",typeof(int)),
             new DataColumn("user_personal_id",typeof(string)),
             new DataColumn("user_mail",typeof(string)),
             new DataColumn("user_phone",typeof(string)),
             new DataColumn("user_name",typeof(string)),
+            new DataColumn("user_keycard",typeof(string)),
             new DataColumn("user_department",typeof(string)),
             new DataColumn("user_position",typeof(string)),
             };    
