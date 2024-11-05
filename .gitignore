@@ -1,4 +1,9 @@
-Client-Side/bin/*
-Client-Side/debug/*
-Client-Side/.vs
-Client-Side/obj/*
+Client-side/bin/*
+Client-side/debug/*
+Client-side/.vs
+Client-side/obj/*
+Server-side/bin
+Server-side/debug
+Server-side/.vs
+Server-side/obj
+.vs
