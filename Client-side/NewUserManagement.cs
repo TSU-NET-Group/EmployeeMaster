@@ -16,6 +16,7 @@ namespace Registration
         public string user_email;
         public int user_phone;
         public string user_name;
+        public string user_keycard;
         public string user_department;
         public string user_position;
     }
@@ -73,10 +74,10 @@ namespace Registration
 
 
             // create dummy data for testing
-            user_struct user1 = new user_struct { id = 1, user_id = "555555", user_email = "sasa@gmail.com", user_phone = 45875489, user_name = "saba shengelia", user_department = "dasuftaveba", user_position = "senior damlagebeli" };
-            user_struct user2 = new user_struct { id = 2, user_id = "8945884", user_email = "soso@gmail.com", user_phone = 84578423, user_name = "soso wiqarishvili", user_department = "software development", user_position = "junior backend developer" };
-            user_struct user3 = new user_struct { id = 3, user_id = "47894652", user_email = "jemal@gmail.com", user_phone = 84578423, user_name = "jemal kandavili", user_department = "driver development", user_position = "manager" };
-            user_struct user4 = new user_struct { id = 4, user_id = "594884", user_email = "nino@gmail.com", user_phone = 7859234, user_name = "nino bugadze", user_department = "KGB", user_position = "CLASSIFIED" };
+            user_struct user1 = new user_struct { id = 1, user_id = "555555", user_email = "sasa@gmail.com", user_phone = 45875489, user_name = "saba shengelia", user_keycard = "56412314", user_department = "dasuftaveba", user_position = "senior damlagebeli" };
+            user_struct user2 = new user_struct { id = 2, user_id = "8945884", user_email = "soso@gmail.com", user_phone = 84578423, user_name = "soso wiqarishvili", user_keycard = "114235641", user_department = "software development", user_position = "junior backend developer" };
+            user_struct user3 = new user_struct { id = 3, user_id = "47894652", user_email = "jemal@gmail.com", user_phone = 84578423, user_name = "jemal kandavili", user_keycard = "45618", user_department = "driver development", user_position = "manager" };
+            user_struct user4 = new user_struct { id = 4, user_id = "594884", user_email = "nino@gmail.com", user_phone = 7859234, user_name = "nino bugadze", user_keycard = "456218", user_department = "KGB", user_position = "CLASSIFIED" };
 
             // add the dummy data to the data table
             add_to_user_table(user1, user2, user3, user4);
@@ -105,6 +106,7 @@ namespace Registration
                     _user.user_email,
                     _user.user_phone,
                     _user.user_name,
+                    _user.user_keycard,
                     _user.user_department,
                     _user.user_position);
             }

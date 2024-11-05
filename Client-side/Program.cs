@@ -1,11 +1,5 @@
-﻿using Department;
-using GroupProject_v001;
-using Registration;
+﻿using Registration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EmployeeMaster
@@ -26,7 +20,7 @@ namespace EmployeeMaster
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            
+
 
             // example of how departments can be set up
             Departament department_1 = new Departament(
@@ -41,8 +35,9 @@ namespace EmployeeMaster
 
             All_Departments.Departments.Add(department_1);
 
-      
-            Application.Run(new RegistrationForm());
+
+            Application.Run(new NewUserManagement());
+            //Application.Run(new RegistrationForm());
             //Application.Run(new NewUserManagement());
         }
     }
