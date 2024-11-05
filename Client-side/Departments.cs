@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Registration;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
-using System.Xml;
-using Registration;
 
 namespace Department
 {
@@ -18,6 +17,7 @@ namespace Department
         public Button Departmentsub;
         public Label Departmentplus;
         public Label Departmentminus;
+        public static List<TextBox> position_text_boxes = new List<TextBox>();
 
 
         public TextBox input;
@@ -25,7 +25,7 @@ namespace Department
 
         public Label InputLabel;
 
-        Departament MyDep = new Departament("",null);
+
         public Departments()
         {
             InitializeComponent();
@@ -106,38 +106,11 @@ namespace Department
             this.Controls.Add(Errorlabel);
             groupBox1.Controls.Add(Errorlabel);
 
-            //MyDep = new Departament(); 
-           
-            string path = Application.StartupPath + @"\MyGrid.xml";
 
-            // Ensure the file exists before attempting to read
-            if (!File.Exists(path))
-            {
-                // Create the file if it doesn't exist
-                using (File.Create(path)) { }
-            }
-            try
-            {
-                if (dataGridView1 != null)
-                {
-                    FileReader(dataGridView1);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"{ex.Message}");
-            }
         }
         private void Departments_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (dataGridView1.Columns.Count > 0)
-            {
-                FileWriter(dataGridView1);
-            }
-            else
-            {
-                MessageBox.Show("no columns saved");
-            }
+
         }
 
 
@@ -169,8 +142,7 @@ namespace Department
         private void Departmentsub_Click(object sender, EventArgs e)
         {
             int index1;
-            MyDep = new Departament(input.Text, null);
-            string departmentname = MyDep.Name;
+            string departmentname = input.Text;
 
             if (!string.IsNullOrEmpty(departmentname))
             {
@@ -195,31 +167,35 @@ namespace Department
                     index = dataGridView1.CurrentCell.ColumnIndex;
                     dataGridView1.Columns.RemoveAt(index);
                 }
-                else { MessageBox.Show($"enter valid '{MyDep.Name}' "); }
+                else { MessageBox.Show($"enter valid '{departmentname}' "); }
 
             }
+
+            
+
+
+            Departament newDep = new Departament(input.Text, null);
         }
         //adding some depetments 
         private void Departmentadd_Click(object sender, EventArgs e)
         {
 
-            MyDep.Name = input.Text;
+            Departament newDep = new Departament(input.Text, null);
+            DataGridViewTextBoxColumn textColumn = new DataGridViewTextBoxColumn();
 
-            if (!string.IsNullOrEmpty(MyDep.Name))
+            if (!string.IsNullOrEmpty(newDep.Name))
             {
-                if (dataGridView1.Columns.Contains(MyDep.Name))
+                if (dataGridView1.Columns.Contains(newDep.Name))
                 {
                     Errorlabel.Text = "this Department already exists type different name";
                     return;
                 }
 
                 Errorlabel.Text = string.Empty;
-                DataGridViewTextBoxColumn textColumn = new DataGridViewTextBoxColumn();
-                textColumn.HeaderText = MyDep.Name;
-                textColumn.Name = MyDep.Name;
+                textColumn.HeaderText = newDep.Name;
+                textColumn.Name = newDep.Name;
 
                 // Add the column to the DataGridView
-                dataGridView1.Columns.Add(textColumn);
 
             }
             else
@@ -229,142 +205,7 @@ namespace Department
             }
 
 
-        }
-
-
-        private void FileReader(DataGridView dgv)
-        {
-
-            //making xml document  
-            XmlDocument xmlDocument = new XmlDocument();
-
-            //filepath that eveyone have
-            string filePath = Application.StartupPath + @"\MyGrid.xml";
-
-            if (!File.Exists(filePath))
-            {
-                MessageBox.Show("File not found.");
-                return;
-            }
-            //reading from file 
-            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-            {
-                xmlDocument.Load(fs);
-                XmlNodeList xmlColumnNodes = xmlDocument.GetElementsByTagName("column");
-                XmlNodeList xmlRowNodes = xmlDocument.GetElementsByTagName("Row");
-                //checking each column
-                for (int i = 0; i < xmlColumnNodes.Count; i++)
-                {
-                    //checking some nodes from xml which is already typed there 
-                    MyDep.Name = xmlColumnNodes[i]["Name"]?.InnerText.Trim();
-                    string headerText = xmlColumnNodes[i]["Headertext"]?.InnerText.Trim();
-                    int displayIndex = int.Parse(xmlColumnNodes[i]["displayindex"]?.InnerText.Trim() ?? "0");
-                    bool visible = Convert.ToBoolean(xmlColumnNodes[i]["visible"]?.InnerText.Trim());
-
-                    // Check if the column already exists
-                    DataGridViewColumn column = dgv.Columns[MyDep.Name];
-                    if (column == null)
-                    {
-                        // Create a new column if it doesn't exist
-                        column = new DataGridViewTextBoxColumn
-                        {
-                            Name = MyDep.Name,
-                            HeaderText = headerText,
-                            Visible = visible
-                        };
-                        dgv.Columns.Add(column);
-                    }
-                    else
-                    {
-                        // Update existing column properties
-                        column.HeaderText = headerText;
-                        column.Visible = visible;
-                    }
-
-                    // Set display index
-                    column.DisplayIndex = displayIndex;
-
-
-
-
-                }
-                //checking each cellnode from rows  
-                foreach (XmlNode rowNode in xmlRowNodes)
-                {
-                    // Create a new row in the DataGridView
-                    int rowIndex = dgv.Rows.Add();
-                    DataGridViewRow dgvRow = dgv.Rows[rowIndex];// Get the newly added row to set its cells
-
-                    foreach (XmlNode cellNode in rowNode.ChildNodes) // For each cell element in XML
-                    {
-                        // Check if the column exists in the DataGridView
-                        string columnName = cellNode.Name;
-                        if (dgv.Columns.Contains(columnName))
-                        {
-                            dgvRow.Cells[columnName].Value = cellNode.InnerText.Trim();// Check if this column exists in the DataGridView
-                        }
-                    }
-
-                    // Set row-level properties if needed 
-                    bool rowVisible = Convert.ToBoolean(rowNode["visible"]?.InnerText.Trim() ?? "true");
-                    // Set cell value from XML data
-                    dgvRow.Visible = rowVisible;
-                }
-            }
-        }
-
-        // writing to file 
-        private void FileWriter(DataGridView dgv)
-        {
-
-            string filePath = Application.StartupPath + @"\MyGrid.xml";
-
-            using (XmlTextWriter writer = new XmlTextWriter(filePath, null))
-            {
-
-                //formatin file for readability 
-                writer.Formatting = Formatting.Indented;
-                writer.WriteStartDocument();
-                writer.WriteStartElement("DataGridView");
-
-                foreach (DataGridViewColumn column in dgv.Columns)
-                {
-                    writer.WriteStartElement("column");
-
-                    writer.WriteElementString("Name", column.Name);
-                    writer.WriteElementString("Headertext", column.HeaderText);
-                    writer.WriteElementString("displayindex", column.DisplayIndex.ToString());
-                    writer.WriteElementString("visible", column.Visible.ToString());
-
-                    writer.WriteEndElement();
-
-
-                }
-
-                foreach (DataGridViewRow row in dgv.Rows)
-                {
-                    //to skip empty cell after every editing
-                    if (row.IsNewRow) continue;
-
-                    writer.WriteStartElement("Row");
-                    //each cell within its department or column will be filled 
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        string columnName = dgv.Columns[cell.ColumnIndex].Name;
-                        writer.WriteElementString(columnName, cell.Value?.ToString() ?? string.Empty);
-
-                    }
-
-
-                    writer.WriteElementString("displayIndex", row.Index.ToString());
-                    writer.WriteElementString("visible", row.Visible.ToString());
-
-                    writer.WriteEndElement();
-                }
-
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-            }
+            dataGridView1.Columns.Add(textColumn);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

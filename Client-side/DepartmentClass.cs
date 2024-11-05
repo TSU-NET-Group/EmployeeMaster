@@ -36,7 +36,7 @@ namespace Registration
         }
 
         public string Name { get { return this.department_name; } set { this.department_name = value; } }
-        public Position[] Positions { get { return this.positions; } }
+        public Position[] Positions { get { return this.positions; } set { positions = value; } }
 
 
         public override string ToString()
