@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -27,6 +28,12 @@ namespace Registration
         public static TextBox search_text_box;
         public static DataGridView user_data_grid_view;
         public static ComboBox search_option_combo_box;
+        public static Button save_button;
+        public static Button refresh_button;
+        public static ComboBox sort_by_combo_box;
+
+        public static DataGridView temp_data_grid_view;
+
 
         public NewUserManagement()
         {
@@ -53,6 +60,12 @@ namespace Registration
             this.Controls.Add(user_data_grid_view);
 
 
+            // data grid view to display search results
+            temp_data_grid_view = new DataGridView();
+            temp_data_grid_view.Size = new Size(600, 350);
+            temp_data_grid_view.Location = new Point(10, 500);
+            this.Controls.Add(temp_data_grid_view);
+
             initialize_data_tables(); // set up all the data tables
 
 
@@ -71,6 +84,37 @@ namespace Registration
             search_option_combo_box.SelectedIndex = 0;
 
 
+            // combo box for sorting
+            sort_by_combo_box = new ComboBox();
+            sort_by_combo_box.Location = new Point(640, 280);
+            sort_by_combo_box.Size = new Size(100, 25);
+            sort_by_combo_box.Items.AddRange(user_data_table.Columns
+    .Cast<DataColumn>()
+    .Select(column => column.ColumnName)
+    .ToArray());
+            sort_by_combo_box.SelectedIndex = 1;
+            sort_by_combo_box.DropDownStyle = ComboBoxStyle.DropDownList;
+            sort_by_combo_box.SelectedIndexChanged += sort_by_combo_box_SelectedIndex;
+            this.Controls.Add(sort_by_combo_box);
+
+
+
+            // save to table
+            save_button = new Button();
+            save_button.Size = new Size(100, 50);
+            save_button.Location = new Point(650, 20);
+            save_button.Text = "Save";
+            save_button.Click += new EventHandler(save_button_click);
+            this.Controls.Add(save_button);
+
+            // refresh table display
+            refresh_button = new Button();
+            refresh_button.Size = new Size(100, 50);
+            refresh_button.Location = new Point(650, 80);
+            refresh_button.Text = "Refresh";
+            refresh_button.Click += new EventHandler(refresh_button_click);
+            this.Controls.Add(refresh_button);
+
 
 
             // create dummy data for testing
@@ -80,7 +124,7 @@ namespace Registration
             user_struct user4 = new user_struct { id = 4, user_id = "594884", user_email = "nino@gmail.com", user_phone = 7859234, user_name = "nino bugadze", user_keycard = "456218", user_department = "KGB", user_position = "CLASSIFIED" };
 
             // add the dummy data to the data table
-            add_to_user_table(user1, user2, user3, user4);
+            add_to_user_table(user4, user2, user3, user1);
 
             // set the data source for grid view so we can visually see the data table
             user_data_grid_view.DataSource = user_data_table;
@@ -94,7 +138,7 @@ namespace Registration
             user_data_table.Columns.AddRange(EmployeeMaster.columns.column_names.ToArray());
         }
 
-            
+
         public static void add_to_user_table(params user_struct[] _users)
         {
             // add every user to the data table
@@ -111,7 +155,6 @@ namespace Registration
                     _user.user_position);
             }
         }
-
 
 
 
@@ -166,5 +209,23 @@ namespace Registration
                 user_data_grid_view.DataSource = user_data_table;
             }
         }
+
+
+        private void save_button_click(object sender, EventArgs e)
+        {
+            temp_data_grid_view.DataSource = user_data_table;
+        }
+
+        private void refresh_button_click(object sender, EventArgs e)
+        {
+            search_text_box.Text = string.Empty;
+            search_text_box_TextChanged(sender, e);
+        }
+
+        private void sort_by_combo_box_SelectedIndex(object sender, EventArgs e)
+        {
+            user_data_grid_view.Sort(user_data_grid_view.Columns[sort_by_combo_box.Text], ListSortDirection.Ascending);
+        }
+
     }
 }
