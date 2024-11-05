@@ -33,7 +33,6 @@ namespace EmployeeMaster
                     new Position("designer"),
                 });
 
-            All_Departments.Departments.Add(department_1);
 
 
             Application.Run(new NewUserManagement());

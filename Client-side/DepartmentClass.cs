@@ -32,6 +32,7 @@ namespace Registration
         {
             this.department_name = name;
             this.positions = positions;
+            All_Departments.Departments.Add(this);
         }
 
         public string Name { get { return this.department_name; } set { this.department_name = value; } }
