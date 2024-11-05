@@ -1,4 +1,6 @@
-﻿using Registration;
+﻿using Department;
+using GroupProject_v001;
+using Registration;
 using System;
 using System.Windows.Forms;
 
@@ -35,7 +37,7 @@ namespace EmployeeMaster
 
 
 
-            Application.Run(new NewUserManagement());
+            Application.Run(new Departments());
             //Application.Run(new RegistrationForm());
             //Application.Run(new NewUserManagement());
         }
