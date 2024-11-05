@@ -61,6 +61,12 @@
       <DependentUpon>HRview.cs</DependentUpon>
     </Compile>
     <Compile Include="HR_Module.cs" />
+    <Compile Include="KeyCardCodeGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyCardCodeGenerator.Designer.cs">
+      <DependentUpon>KeyCardCodeGenerator.cs</DependentUpon>
+    </Compile>
     <Compile Include="KeyCardInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HRview.resx">
       <DependentUpon>HRview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeyCardCodeGenerator.resx">
+      <DependentUpon>KeyCardCodeGenerator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KeyCardInterface.resx">
       <DependentUpon>KeyCardInterface.cs</DependentUpon>
