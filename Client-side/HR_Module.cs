@@ -58,12 +58,16 @@ namespace EmployeeMaster
 
 
         //needs departments list to be fully complete
-        public void Table_Init()
+        public void Table_Init(string department_name="all", string position_name="all")
         {
+
+
             Employee_Table = new DataTable();
             Position_Table = new DataTable();
             Department_Table= new DataTable();
             Result_Table= new DataTable();
+
+
             /*
             for (int i = 0; i < Column_Type.Count; i++)
             {
@@ -105,8 +109,10 @@ namespace EmployeeMaster
                     Employee_Table.Rows.Add(NewUserManagement.user_data_table.Rows[i]);
             }
 
+            Load_By_Department(department_name);
+            Load_By_Position(position_name);
 
-
+            Result_Table = Position_Table;
 
         }
 
@@ -214,8 +220,7 @@ namespace EmployeeMaster
 
     class Hr_Schedule_module : HR_module
     {
-        //module for managing schedule for employees
-
+        
         
     }
 
