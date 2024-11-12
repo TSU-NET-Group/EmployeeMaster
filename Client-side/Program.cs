@@ -36,9 +36,9 @@ namespace EmployeeMaster
 
 
 
-            Application.Run(new KeyCardCodeGenerator());
+            //Application.Run(new KeyCardCodeGenerator());
             //Application.Run(new RegistrationForm());
-            //Application.Run(new NewUserManagement());
+            Application.Run(new NewUserManagement());
         }
     }
 }
