@@ -1,4 +1,3 @@
-﻿using Department;
 using GroupProject_v001;
 using Registration;
 using System;
@@ -37,7 +36,7 @@ namespace EmployeeMaster
 
 
 
-            Application.Run(new Departments());
+            Application.Run(new KeyCardCodeGenerator());
             //Application.Run(new RegistrationForm());
             //Application.Run(new NewUserManagement());
         }
