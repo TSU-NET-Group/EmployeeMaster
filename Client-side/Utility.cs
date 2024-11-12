@@ -97,6 +97,10 @@ namespace Utility
         // cuurently only works for georgian phone numbers
         public static bool verify_phone(string input, string regex_pattern = @"^\d{10}$") => Regex.IsMatch(input, regex_pattern);
 
+        // remove all white space
+        public static string normalize_phone(string input) => input.Replace(" ", "");
+      
+
         // cuurently only works for georgian IDs
         public static bool verify_id(string input, string regex_pattern = @"^\d{11}$") => Regex.IsMatch(input, regex_pattern);
 
