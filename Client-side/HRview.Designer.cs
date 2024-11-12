@@ -31,19 +31,6 @@ namespace EmployeeMaster
         {
             this.HR_CMS = new System.Windows.Forms.TabControl();
             this.Employee_List = new System.Windows.Forms.TabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.Department_1 = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.Search_Option2 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.Department_2 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Search_Option1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.Department_3 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Search_Option = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Add_Employee = new System.Windows.Forms.TabPage();
             this.Schedule_Manager = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -60,6 +47,12 @@ namespace EmployeeMaster
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.All = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Search_Option = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Positions_in_Department = new System.Windows.Forms.ComboBox();
+            this.Departments = new System.Windows.Forms.TabControl();
             this.Name_Surname_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,24 +70,33 @@ namespace EmployeeMaster
             this.N13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Positions = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.N16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.N31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HR_CMS.SuspendLayout();
             this.Employee_List.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.Department_1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            this.Department_2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.Department_3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Schedule_Manager.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.Daily.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.Monthly.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            this.All.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Departments.SuspendLayout();
             this.SuspendLayout();
             // 
             // HR_CMS
@@ -111,7 +113,10 @@ namespace EmployeeMaster
             // 
             // Employee_List
             // 
-            this.Employee_List.Controls.Add(this.tabControl1);
+            this.Employee_List.Controls.Add(this.Positions_in_Department);
+            this.Employee_List.Controls.Add(this.Departments);
+            this.Employee_List.Controls.Add(this.textBox1);
+            this.Employee_List.Controls.Add(this.Search_Option);
             this.Employee_List.Location = new System.Drawing.Point(4, 22);
             this.Employee_List.Name = "Employee_List";
             this.Employee_List.Padding = new System.Windows.Forms.Padding(3);
@@ -120,164 +125,6 @@ namespace EmployeeMaster
             this.Employee_List.Text = "Employee List";
             this.Employee_List.UseVisualStyleBackColor = true;
             this.Employee_List.Click += new System.EventHandler(this.Department_1_Click);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.Department_1);
-            this.tabControl1.Controls.Add(this.Department_2);
-            this.tabControl1.Controls.Add(this.Department_3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(982, 535);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // Department_1
-            // 
-            this.Department_1.Controls.Add(this.comboBox3);
-            this.Department_1.Controls.Add(this.dataGridView3);
-            this.Department_1.Controls.Add(this.Search_Option2);
-            this.Department_1.Controls.Add(this.textBox3);
-            this.Department_1.Location = new System.Drawing.Point(4, 22);
-            this.Department_1.Margin = new System.Windows.Forms.Padding(1);
-            this.Department_1.Name = "Department_1";
-            this.Department_1.Padding = new System.Windows.Forms.Padding(1);
-            this.Department_1.Size = new System.Drawing.Size(974, 509);
-            this.Department_1.TabIndex = 0;
-            this.Department_1.Text = "Department 1";
-            this.Department_1.UseVisualStyleBackColor = true;
-            this.Department_1.Click += new System.EventHandler(this.tabPage1_Click_2);
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView3.Location = new System.Drawing.Point(1, 1);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(972, 480);
-            this.dataGridView3.TabIndex = 7;
-            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
-            // 
-            // Search_Option2
-            // 
-            this.Search_Option2.FormattingEnabled = true;
-            this.Search_Option2.Items.AddRange(new object[] {
-            "Name/Surname",
-            "ID",
-            "Email"});
-            this.Search_Option2.Location = new System.Drawing.Point(234, 484);
-            this.Search_Option2.Name = "Search_Option2";
-            this.Search_Option2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Search_Option2.Size = new System.Drawing.Size(199, 21);
-            this.Search_Option2.TabIndex = 6;
-            this.Search_Option2.Tag = "";
-            this.Search_Option2.Text = "Search by:";
-            this.Search_Option2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged_1);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(4, 485);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(224, 20);
-            this.textBox3.TabIndex = 5;
-            // 
-            // Department_2
-            // 
-            this.Department_2.Controls.Add(this.Positions);
-            this.Department_2.Controls.Add(this.dataGridView2);
-            this.Department_2.Controls.Add(this.Search_Option1);
-            this.Department_2.Controls.Add(this.textBox2);
-            this.Department_2.Location = new System.Drawing.Point(4, 22);
-            this.Department_2.Name = "Department_2";
-            this.Department_2.Padding = new System.Windows.Forms.Padding(3);
-            this.Department_2.Size = new System.Drawing.Size(974, 509);
-            this.Department_2.TabIndex = 1;
-            this.Department_2.Text = "Department 2";
-            this.Department_2.UseVisualStyleBackColor = true;
-            this.Department_2.Click += new System.EventHandler(this.Department_2_Click);
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(968, 480);
-            this.dataGridView2.TabIndex = 7;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // Search_Option1
-            // 
-            this.Search_Option1.FormattingEnabled = true;
-            this.Search_Option1.Location = new System.Drawing.Point(233, 486);
-            this.Search_Option1.Name = "Search_Option1";
-            this.Search_Option1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Search_Option1.Size = new System.Drawing.Size(199, 21);
-            this.Search_Option1.TabIndex = 6;
-            this.Search_Option1.Tag = "";
-            this.Search_Option1.Text = "Search by:";
-            this.Search_Option1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(3, 486);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(224, 20);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // Department_3
-            // 
-            this.Department_3.Controls.Add(this.comboBox4);
-            this.Department_3.Controls.Add(this.dataGridView1);
-            this.Department_3.Controls.Add(this.Search_Option);
-            this.Department_3.Controls.Add(this.textBox1);
-            this.Department_3.Location = new System.Drawing.Point(4, 22);
-            this.Department_3.Name = "Department_3";
-            this.Department_3.Padding = new System.Windows.Forms.Padding(3);
-            this.Department_3.Size = new System.Drawing.Size(974, 509);
-            this.Department_3.TabIndex = 2;
-            this.Department_3.Text = "Department 3";
-            this.Department_3.UseVisualStyleBackColor = true;
-            this.Department_3.Click += new System.EventHandler(this.Department_3_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(968, 480);
-            this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Search_Option
-            // 
-            this.Search_Option.FormattingEnabled = true;
-            this.Search_Option.Items.AddRange(new object[] {
-            "Name/Surname",
-            "ID",
-            "Email"});
-            this.Search_Option.Location = new System.Drawing.Point(233, 485);
-            this.Search_Option.Name = "Search_Option";
-            this.Search_Option.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Search_Option.Size = new System.Drawing.Size(199, 21);
-            this.Search_Option.TabIndex = 4;
-            this.Search_Option.Tag = "";
-            this.Search_Option.Text = "Search by:";
-            this.Search_Option.SelectedIndexChanged += new System.EventHandler(this.Search_Option_SelectedIndexChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(3, 486);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 20);
-            this.textBox1.TabIndex = 3;
             // 
             // Add_Employee
             // 
@@ -452,12 +299,97 @@ namespace EmployeeMaster
             this.N12,
             this.N13,
             this.N14,
-            this.N15});
+            this.N15,
+            this.N16,
+            this.N17,
+            this.N18,
+            this.N19,
+            this.N20,
+            this.N21,
+            this.N22,
+            this.N23,
+            this.N24,
+            this.N25,
+            this.N26,
+            this.N27,
+            this.N28,
+            this.N29,
+            this.N30,
+            this.N31});
             this.dataGridView5.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView5.Location = new System.Drawing.Point(3, 3);
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.Size = new System.Drawing.Size(968, 473);
             this.dataGridView5.TabIndex = 0;
+            this.dataGridView5.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
+            // 
+            // All
+            // 
+            this.All.Controls.Add(this.dataGridView1);
+            this.All.Location = new System.Drawing.Point(4, 22);
+            this.All.Name = "All";
+            this.All.Padding = new System.Windows.Forms.Padding(3);
+            this.All.Size = new System.Drawing.Size(974, 488);
+            this.All.TabIndex = 2;
+            this.All.Text = "All";
+            this.All.UseVisualStyleBackColor = true;
+            this.All.Click += new System.EventHandler(this.Department_3_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 517);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(224, 20);
+            this.textBox1.TabIndex = 3;
+            // 
+            // Search_Option
+            // 
+            this.Search_Option.FormattingEnabled = true;
+            this.Search_Option.Items.AddRange(new object[] {
+            "Name/Surname",
+            "ID",
+            "Email"});
+            this.Search_Option.Location = new System.Drawing.Point(236, 516);
+            this.Search_Option.Name = "Search_Option";
+            this.Search_Option.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Search_Option.Size = new System.Drawing.Size(199, 21);
+            this.Search_Option.TabIndex = 4;
+            this.Search_Option.Tag = "";
+            this.Search_Option.Text = "Search by:";
+            this.Search_Option.SelectedIndexChanged += new System.EventHandler(this.Search_Option_SelectedIndexChanged);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(968, 482);
+            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Positions_in_Department
+            // 
+            this.Positions_in_Department.FormattingEnabled = true;
+            this.Positions_in_Department.Items.AddRange(new object[] {
+            "All"});
+            this.Positions_in_Department.Location = new System.Drawing.Point(441, 516);
+            this.Positions_in_Department.Name = "Positions_in_Department";
+            this.Positions_in_Department.Size = new System.Drawing.Size(236, 21);
+            this.Positions_in_Department.TabIndex = 9;
+            this.Positions_in_Department.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            // 
+            // Departments
+            // 
+            this.Departments.Controls.Add(this.All);
+            this.Departments.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Departments.Location = new System.Drawing.Point(3, 3);
+            this.Departments.Margin = new System.Windows.Forms.Padding(0);
+            this.Departments.Name = "Departments";
+            this.Departments.SelectedIndex = 0;
+            this.Departments.Size = new System.Drawing.Size(982, 514);
+            this.Departments.TabIndex = 0;
             // 
             // Name_Surname_M
             // 
@@ -546,30 +478,85 @@ namespace EmployeeMaster
             this.N15.HeaderText = "15";
             this.N15.Name = "N15";
             // 
-            // Positions
+            // N16
             // 
-            this.Positions.FormattingEnabled = true;
-            this.Positions.Location = new System.Drawing.Point(438, 486);
-            this.Positions.Name = "Positions";
-            this.Positions.Size = new System.Drawing.Size(236, 21);
-            this.Positions.TabIndex = 8;
-            this.Positions.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.N16.HeaderText = "16";
+            this.N16.Name = "N16";
             // 
-            // comboBox3
+            // N17
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(439, 484);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(236, 21);
-            this.comboBox3.TabIndex = 9;
+            this.N17.HeaderText = "17";
+            this.N17.Name = "N17";
             // 
-            // comboBox4
+            // N18
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(438, 485);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(236, 21);
-            this.comboBox4.TabIndex = 9;
+            this.N18.HeaderText = "18";
+            this.N18.Name = "N18";
+            // 
+            // N19
+            // 
+            this.N19.HeaderText = "19";
+            this.N19.Name = "N19";
+            // 
+            // N20
+            // 
+            this.N20.HeaderText = "20";
+            this.N20.Name = "N20";
+            // 
+            // N21
+            // 
+            this.N21.HeaderText = "21";
+            this.N21.Name = "N21";
+            // 
+            // N22
+            // 
+            this.N22.HeaderText = "22";
+            this.N22.Name = "N22";
+            // 
+            // N23
+            // 
+            this.N23.HeaderText = "23";
+            this.N23.Name = "N23";
+            // 
+            // N24
+            // 
+            this.N24.HeaderText = "24";
+            this.N24.Name = "N24";
+            // 
+            // N25
+            // 
+            this.N25.HeaderText = "25";
+            this.N25.Name = "N25";
+            // 
+            // N26
+            // 
+            this.N26.HeaderText = "26";
+            this.N26.Name = "N26";
+            // 
+            // N27
+            // 
+            this.N27.HeaderText = "27";
+            this.N27.Name = "N27";
+            // 
+            // N28
+            // 
+            this.N28.HeaderText = "28";
+            this.N28.Name = "N28";
+            // 
+            // N29
+            // 
+            this.N29.HeaderText = "29";
+            this.N29.Name = "N29";
+            // 
+            // N30
+            // 
+            this.N30.HeaderText = "30";
+            this.N30.Name = "N30";
+            // 
+            // N31
+            // 
+            this.N31.HeaderText = "31";
+            this.N31.Name = "N31";
             // 
             // HRview
             // 
@@ -583,16 +570,7 @@ namespace EmployeeMaster
             this.Load += new System.EventHandler(this.Form1_Load);
             this.HR_CMS.ResumeLayout(false);
             this.Employee_List.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.Department_1.ResumeLayout(false);
-            this.Department_1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            this.Department_2.ResumeLayout(false);
-            this.Department_2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.Department_3.ResumeLayout(false);
-            this.Department_3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Employee_List.PerformLayout();
             this.Schedule_Manager.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.Daily.ResumeLayout(false);
@@ -601,6 +579,9 @@ namespace EmployeeMaster
             this.Monthly.ResumeLayout(false);
             this.Monthly.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            this.All.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Departments.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -610,21 +591,8 @@ namespace EmployeeMaster
         private System.Windows.Forms.TabControl HR_CMS;
         private System.Windows.Forms.TabPage Employee_List;
         private System.Windows.Forms.TabPage Schedule_Manager;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage Department_1;
-        private System.Windows.Forms.TabPage Department_2;
-        private System.Windows.Forms.TabPage Department_3;
         private System.Windows.Forms.TabPage Daily;
         private System.Windows.Forms.TabPage Monthly;
-        private System.Windows.Forms.ComboBox Search_Option;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox Search_Option2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox Search_Option1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_Surname;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
@@ -637,6 +605,13 @@ namespace EmployeeMaster
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.TabPage Add_Employee;
+        private System.Windows.Forms.TabControl Departments;
+        private System.Windows.Forms.TabPage All;
+        private System.Windows.Forms.ComboBox Positions_in_Department;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox Search_Option;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name_Surname_M;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_M;
         private System.Windows.Forms.DataGridViewTextBoxColumn N1;
@@ -654,10 +629,22 @@ namespace EmployeeMaster
         private System.Windows.Forms.DataGridViewTextBoxColumn N13;
         private System.Windows.Forms.DataGridViewTextBoxColumn N14;
         private System.Windows.Forms.DataGridViewTextBoxColumn N15;
-        private System.Windows.Forms.TabPage Add_Employee;
-        private System.Windows.Forms.ComboBox Positions;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn N31;
     }
 }
 

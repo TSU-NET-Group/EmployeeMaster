@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Registration;
 
 namespace EmployeeMaster
 {
@@ -24,14 +25,39 @@ namespace EmployeeMaster
 
             
             //Search_Option
-            module.Table_Init();
-            dataGridView3.DataSource = module.Result_Table;
+            
+            dataGridView1.DataSource = module.Result_Table;
+
+            List<System.Windows.Forms.DataGridView> data_grids=new List<DataGridView>();
+
             for (int i = 0; i < module.Column_Type.Count; i++)
             {
-                Search_Option1.Items.Add(module.Column_Type[0]);
+                Search_Option.Items.Add(module.Column_Type[0]);
             }
-            
 
+
+            for (int i = 0; i < All_Departments.Departments.Count; i++)
+            {
+                Departments.TabPages.Add(All_Departments.Departments[i].Name);
+
+                DataGridView temp = new DataGridView();
+                temp.Parent = Departments.TabPages[i];
+                temp.Dock = DockStyle.Fill;
+
+
+                data_grids.Add(new DataGridView());
+
+            }
+
+
+            //for (int i = 0; i < All_Departments.Departments[Departments.TabIndex].Positions.Length; i++)
+            //{
+            //    Positions_in_Department.Items.Add(All_Departments.Departments[Departments.TabIndex].Positions[i].Name);
+            //}
+
+            module.Table_Init(Departments.TabPages[Departments.SelectedIndex].Name);
+
+            data_grids[Departments.TabIndex].DataSource = module.Result_Table;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -131,6 +157,16 @@ namespace EmployeeMaster
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
