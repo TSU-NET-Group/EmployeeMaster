@@ -3,41 +3,86 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EmployeeMaster
 {
 
-    enum Lang  {
+
+    enum Lang
+    {
         GEORGIAN,
         ENGLISH
     }
 
-    enum Message
+    enum My_message
     {
         LABEL_LOGIN,
-        LABEL_REGISTER
+        LABEL_REGISTER,
+        LABEL_PASSWORD,
+        LABEL_ID,
+        LABEL_FORGET_PASSWORD,
+        LABEL_GROUPBOX_NAME,
+        LABEL_LANGUAGE_CHANGER,
+        LABEL_GEORGIAN,
+        LABEL_FOREIGHNER,
+        LABEL_EMAIL,
+        LABEL_NAME,
+        LABEL_LASTNAME,
+        LABEL_PHONENUMBER,
+        LABEL_DEPARTMENT,
+        LABEL_POSITION,
+        LABEL_ETHNICITY,
+        LABEL_IMAGE
     }
 
     class LanguagePack
     {
-        Lang Language ;
+        Lang Language;
 
 
-        public Dictionary<Message, string> Text 
+        public Dictionary<My_message, string> Text
         {
-            get { 
+            get
+            {
                 if (Language == Lang.ENGLISH) { return TextENG; }
                 else if (Language == Lang.GEORGIAN) { return TextGEO; }
                 else throw new NotImplementedException($"No support for the requested language {Language}");
             }
-            private set { }
+            private set 
+            {
+                
+            }
         }
 
-        private Dictionary<Message, string> TextENG;
-        private Dictionary<Message, string> TextGEO;
+        private static Dictionary<My_message, string> TextENG = new Dictionary<My_message, string>();
+
+        private static Dictionary<My_message, string> TextGEO = new Dictionary<My_message, string>();
+        
+        //checking if inputed language even exists in enum
         public LanguagePack(Lang language)
         {
-            Language = language;
+            if(language == Lang.ENGLISH || language == Lang.GEORGIAN)
+            {
+                Language = language;
+            }
+            else
+            {
+               throw new Exception("This language is not intended!");
+            }
+            
+        }
+        // adding values to the private dicitonaries 
+        public void addTranslate(My_message message, string valaue) 
+        {
+            if (Language == Lang.GEORGIAN)
+            {
+                TextGEO[message] =  valaue;
+            }
+            else if (Language == Lang.ENGLISH) 
+            {
+                TextENG[message] = valaue;
+            }
         }
     }
 }

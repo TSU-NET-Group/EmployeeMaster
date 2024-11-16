@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeMaster;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -13,6 +14,8 @@ namespace Registration
 {
     public partial class RegistrationForm : Form
     {
+        //initialization before using
+        private LanguagePack languagePack;
         // Get all country names
         string[] ALL_COUNTRIES = CultureInfo.GetCultures(CultureTypes.SpecificCultures)
             .Select(culture => new RegionInfo(culture.Name).EnglishName)
@@ -26,40 +29,40 @@ namespace Registration
 
         private int spacing = 50;
 
-        public Label ID_label;
+        public Label ID_label = new Label();
         public TextBox ID_text_box;
 
-        public Label password_label;
+        public Label password_label = new Label();
         public TextBox password_text_box;
 
-        public Label email_label;
+        public Label email_label = new Label();
         public TextBox email_text_box;
 
-        public Label name_label;
+        public Label name_label = new Label();
         public TextBox name_text_box;
 
-        public Label lastname_label;
+        public Label lastname_label = new Label();
         public TextBox lastname_text_box;
 
-        public Label phone_number_label;
+        public Label phone_number_label = new Label();
         public TextBox phone_number_text_box;
 
         // TODO: ADD KEYCARD
 
-        public Label ethnicity_label;
-        public RadioButton georgian_radio_button;
-        public RadioButton foreigner_radio_button;
+        public Label ethnicity_label = new Label();
+        public RadioButton georgian_radio_button = new RadioButton();
+        public RadioButton foreigner_radio_button = new RadioButton();
 
-        public Label department_label;
+        public Label department_label = new Label();
         public ComboBox department_combo_box;
 
-        public Label position_label;
+        public Label position_label = new Label();
         public ComboBox position_combo_box;
 
-        public Button image_upload_button;
+        public Button image_upload_button = new Button();
         public PictureBox uploaded_image_picture_box;
 
-        public Button register_button;
+        public Button register_button = new Button();
 
         public ComboBox Combobox_Language;
         public GroupBox groupbox = new GroupBox();
@@ -92,6 +95,7 @@ namespace Registration
             Combobox_Language.Location = new Point(620, spacing * 1);
             Combobox_Language.Size = new Size(50, 25);
             Combobox_Language.DropDownStyle = ComboBoxStyle.DropDownList;
+            Combobox_Language.SelectedIndexChanged +=  new EventHandler(Combobox_Language_SelectedIndexChanged);                     
             Combobox_Language.Items.Add("Eng");
             Combobox_Language.Items.Add("Geo");
             Combobox_Language.SelectedIndex = 0;
@@ -100,9 +104,10 @@ namespace Registration
 
 
             // ID_label
-            ID_label = new Label();
-            ID_label.Location = new Point(120, spacing * 1);
+           
+            ID_label.Location = new Point(50, spacing * 1);
             ID_label.Text = "ID";
+            ID_label.Size = new Size(70, 25);
             ID_label.AutoSize = true;
             this.Controls.Add(ID_label);
 
@@ -116,8 +121,8 @@ namespace Registration
 
 
             // password_label
-            password_label = new Label();
-            password_label.Location = new Point(120, spacing * 2);
+           
+            password_label.Location = new Point(50, spacing * 2);
             password_label.Text = "Password";
             password_label.AutoSize = true;
             this.Controls.Add(password_label);
@@ -131,8 +136,8 @@ namespace Registration
 
 
             // email_label
-            email_label = new Label();
-            email_label.Location = new Point(120, spacing * 3);
+          
+            email_label.Location = new Point(50, spacing * 3);
             email_label.Text = "Email";
             email_label.AutoSize = true;
             this.Controls.Add(email_label);
@@ -146,8 +151,8 @@ namespace Registration
 
 
             // name_label
-            name_label = new Label();
-            name_label.Location = new Point(120, spacing * 4);
+          
+            name_label.Location = new Point(50, spacing * 4);
             name_label.Text = "Name";
             name_label.AutoSize = true;
             this.Controls.Add(name_label);
@@ -161,8 +166,8 @@ namespace Registration
 
 
             // lastname_label
-            lastname_label = new Label();
-            lastname_label.Location = new Point(120, spacing * 5);
+            
+            lastname_label.Location = new Point(50, spacing * 5);
             lastname_label.Text = "Last name";
             lastname_label.AutoSize = true;
             this.Controls.Add(lastname_label);
@@ -176,8 +181,8 @@ namespace Registration
 
 
             // lastname_label
-            phone_number_label = new Label();
-            phone_number_label.Location = new Point(120, spacing * 6);
+         
+            phone_number_label.Location = new Point(50, spacing * 6);
             phone_number_label.Text = "Phone Number";
             phone_number_label.AutoSize = true;
             this.Controls.Add(phone_number_label);
@@ -209,21 +214,21 @@ namespace Registration
 
 
             // ethnicity_label
-            ethnicity_label = new Label();
-            ethnicity_label.Location = new Point(120, spacing * 7);
+          
+            ethnicity_label.Location = new Point(50, spacing * 7);
             ethnicity_label.Text = "Ethnicity";
             ethnicity_label.AutoSize = true;
             this.Controls.Add(ethnicity_label);
 
             // georgian_radio_button
-            georgian_radio_button = new RadioButton();
+           
             georgian_radio_button.Location = new Point(250, spacing * 7);
             georgian_radio_button.Text = "Georgian";
             georgian_radio_button.AutoSize = true;
             this.Controls.Add(georgian_radio_button);
 
             // foreigner_radio_button
-            foreigner_radio_button = new RadioButton();
+        
             foreigner_radio_button.Location = new Point(250 + georgian_radio_button.Right, spacing * 7);
             foreigner_radio_button.Text = "Foreigner";
             georgian_radio_button.AutoSize = true;
@@ -231,8 +236,8 @@ namespace Registration
 
 
             // department_label
-            department_label = new Label();
-            department_label.Location = new Point(120, spacing * 8);
+        
+            department_label.Location = new Point(50, spacing * 8);
             department_label.Text = "Department";
             department_label.AutoSize = true;
             this.Controls.Add(department_label);
@@ -250,8 +255,8 @@ namespace Registration
 
 
             // position_label
-            position_label = new Label();
-            position_label.Location = new Point(120, spacing * 9);
+         
+            position_label.Location = new Point(50, spacing * 9);
             position_label.Text = "Position";
             position_label.AutoSize = true;
             this.Controls.Add(position_label);
@@ -266,9 +271,9 @@ namespace Registration
             this.Controls.Add(position_combo_box);
 
             // upload image 
-            image_upload_button = new Button();
+          
             image_upload_button.Location = new Point(250, spacing * 10);
-            image_upload_button.Size = new Size(100, 50);
+            image_upload_button.Size = new Size(170, 50);
             image_upload_button.Text = "Upload\nImage";
             image_upload_button.Click += new EventHandler(image_upload_button_Click);
             this.Controls.Add(image_upload_button);
@@ -284,9 +289,9 @@ namespace Registration
 
 
             // finish registration
-            register_button = new Button();
+        
             register_button.Location = new Point(500, spacing * 9);
-            register_button.Size = new Size(100, 50);
+            register_button.Size = new Size(170, 50);
             register_button.Text = "Register";
             register_button.Click += new EventHandler(register_button_Click);
             this.Controls.Add(register_button);
@@ -569,6 +574,104 @@ namespace Registration
 
             return true;
         }
+        /*
+         this function basically just adding some values to the dictionary 
+         translates to the keys to acces them later on 
+         */
+        private void addDicts()
+        {
+            try
+            {
+                LanguagePack temp1 = new LanguagePack(Lang.GEORGIAN);
+                temp1.addTranslate(My_message.LABEL_ID, "პირადობა:");
+                temp1.addTranslate(My_message.LABEL_PASSWORD, "პაროლი:");
+                temp1.addTranslate(My_message.LABEL_NAME, "სახელი:");
+                temp1.addTranslate(My_message.LABEL_LASTNAME, "გვარი:");
+                temp1.addTranslate(My_message.LABEL_EMAIL, "ელ-ფოსტა:");
+                temp1.addTranslate(My_message.LABEL_PHONENUMBER, "ტელეფონის ნომერი:");
+                temp1.addTranslate(My_message.LABEL_ETHNICITY, "ეთნიკურობა:");
+                temp1.addTranslate(My_message.LABEL_GEORGIAN, "ქართველი:");
+                temp1.addTranslate(My_message.LABEL_FOREIGHNER, "უცხოელი:");
+                temp1.addTranslate(My_message.LABEL_DEPARTMENT, "დეპარტამენტი:");
+                temp1.addTranslate(My_message.LABEL_POSITION, "პოზიცია:");
+                temp1.addTranslate(My_message.LABEL_IMAGE, "ატვირთე ფოტო:");
+                temp1.addTranslate(My_message.LABEL_REGISTER, "დარეგისტრირდი:");
+                temp1.addTranslate(My_message.LABEL_GROUPBOX_NAME, "რეგისტრაცია");
+
+                LanguagePack temp2 = new LanguagePack(Lang.ENGLISH);
+                temp2.addTranslate(My_message.LABEL_ID, "ID:");
+                temp2.addTranslate(My_message.LABEL_PASSWORD, "Password:");
+                temp2.addTranslate(My_message.LABEL_NAME, "Name:");
+                temp2.addTranslate(My_message.LABEL_LASTNAME, "Lastname:");
+                temp2.addTranslate(My_message.LABEL_EMAIL, "Email:");
+                temp2.addTranslate(My_message.LABEL_PHONENUMBER, "Phonenumber:");
+                temp2.addTranslate(My_message.LABEL_ETHNICITY, "Ethnicity:");
+                temp2.addTranslate(My_message.LABEL_GEORGIAN, "Georgian:");
+                temp2.addTranslate(My_message.LABEL_FOREIGHNER, "Foreighner:");
+                temp2.addTranslate(My_message.LABEL_DEPARTMENT, "Department:");
+                temp2.addTranslate(My_message.LABEL_POSITION, "Position:");
+                temp2.addTranslate(My_message.LABEL_IMAGE, "Upload Image:");
+                temp2.addTranslate(My_message.LABEL_REGISTER, "Register:");
+                temp2.addTranslate(My_message.LABEL_GROUPBOX_NAME, "Registration");
+            }
+            catch (NullReferenceException ex) { MessageBox.Show($"Error with1:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+            catch (ArgumentNullException ex) { MessageBox.Show($"Error with2:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+            catch (Exception ex) { MessageBox.Show($"Error with3:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+        }
+        /*
+         * this function adding from dictionaries to the real labels this translate values 
+         */
+        private void addtranslates()
+        {
+            addDicts();
+
+
+            ID_label.Text = languagePack.Text[My_message.LABEL_ID];
+            password_label.Text = languagePack.Text[My_message.LABEL_PASSWORD];
+            name_label.Text = languagePack.Text[My_message.LABEL_NAME];
+            lastname_label.Text = languagePack.Text[My_message.LABEL_LASTNAME];
+            email_label.Text = languagePack.Text[My_message.LABEL_EMAIL];
+            phone_number_label.Text = languagePack.Text[My_message.LABEL_PHONENUMBER];
+            ethnicity_label.Text = languagePack.Text[My_message.LABEL_ETHNICITY];
+            georgian_radio_button.Text = languagePack.Text[My_message.LABEL_GEORGIAN];
+            foreigner_radio_button.Text = languagePack.Text[My_message.LABEL_FOREIGHNER];
+            department_label.Text = languagePack.Text[My_message.LABEL_DEPARTMENT];
+            position_label.Text = languagePack.Text[My_message.LABEL_POSITION];
+            image_upload_button.Text = languagePack.Text[My_message.LABEL_IMAGE];
+            register_button.Text = languagePack.Text[My_message.LABEL_REGISTER];
+            groupbox.Text = languagePack.Text[My_message.LABEL_GROUPBOX_NAME];
+        }
+        /*
+         to switch language when we want them to be switched 
+         */
+        private void switchlanguage(Lang Language)
+        {
+            languagePack = new LanguagePack(Language);  // Create new language pack for new language
+            addtranslates();
+        }
+        private void Combobox_Language_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Combobox_Language.SelectedItem.ToString() == "Geo")
+                {
+
+                    switchlanguage(Lang.GEORGIAN);
+
+
+                }
+                else if (Combobox_Language.SelectedItem.ToString() == "Eng")
+                {
+
+                    switchlanguage(Lang.ENGLISH);
+
+                }
+            }
+            catch (NullReferenceException ex) { MessageBox.Show($"Error with1:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+            catch (ArgumentNullException ex) { MessageBox.Show($"Error with2:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+            catch (Exception ex) { MessageBox.Show($"Error with3:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+        }
+
 
         private void RegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
         {

@@ -1,4 +1,5 @@
-﻿using GroupProject_v001;
+﻿using EmployeeMaster;
+using GroupProject_v001;
 using Registration;
 using System;
 using System.Drawing;
@@ -7,8 +8,10 @@ using Utility;
 
 namespace EmployeeMaster
 {
+   
     public partial class LoginForm : Form
     {
+        private LanguagePack languagePack;
         public LoginForm()
         {
             InitializeComponent();
@@ -194,19 +197,105 @@ namespace EmployeeMaster
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            languageSelector.SelectedIndexChanged += LanguageSelector_SelectedIndexChanged;
+        }
 
+        private void LanguageSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+           
+            try
+            {
+                if (languageSelector.SelectedItem.ToString() == "GEO")
+                {
+
+                    switcH(Lang.GEORGIAN);
+                    
+
+                }
+                else if (languageSelector.SelectedItem.ToString() == "ENG")
+                {
+
+                    switcH(Lang.ENGLISH);
+
+                }
+            }
+            catch (NullReferenceException ex) { MessageBox.Show($"Error with1:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+            catch (ArgumentNullException ex) { MessageBox.Show($"Error with2:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+            catch (Exception ex) { MessageBox.Show($"Error with3:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+        }
+        private void switcH(Lang Langugage)
+        {
+            languagePack = new LanguagePack(Langugage);  // Create new language pack for new language
+            addTranslatetolabels();
         }
 
         private void label_forgotPassWord_Click(object sender, EventArgs e)
         {
 
         }
+        /*
+          * this function adding from dictionaries to the real labels this translate values 
+          */
+        private void addTranslatetolabels()
+        {
+            Dictionaryadd();
 
+           
+            label_ID.Text = languagePack.Text[My_message.LABEL_ID];
+            label_password.Text = languagePack.Text[My_message.LABEL_PASSWORD];
+            btn_logIn.Text = languagePack.Text[My_message.LABEL_LOGIN];
+            label_forgotPassWord.Text = languagePack.Text[My_message.LABEL_FORGET_PASSWORD];
+            btn_registration.Text = languagePack.Text[My_message.LABEL_REGISTER];
+            radioBtnGeorgian.Text = languagePack.Text[My_message.LABEL_GEORGIAN];
+            radioBtnForeigner.Text = languagePack.Text[My_message.LABEL_FOREIGHNER];
+            label1.Text = languagePack.Text[My_message.LABEL_LANGUAGE_CHANGER];
+            loginGroupBox.Text = languagePack.Text[My_message.LABEL_GROUPBOX_NAME];
+
+        }
+        /*
+         this function basically just adding some values to the dictionary 
+         translates to the keys to acces them later on 
+         */
+        private void Dictionaryadd()
+        {
+            try
+            {
+                LanguagePack temp1 = new LanguagePack(Lang.GEORGIAN);
+                temp1.addTranslate(My_message.LABEL_ID, "პირადობა:");
+                temp1.addTranslate(My_message.LABEL_PASSWORD, "პაროლი:");
+                temp1.addTranslate(My_message.LABEL_LOGIN, "ავტორიზაცია:");
+                temp1.addTranslate(My_message.LABEL_FORGET_PASSWORD, "დაგავიწყდა პაროლი?:");
+                temp1.addTranslate(My_message.LABEL_REGISTER, "დარეგისტრირება:");
+                temp1.addTranslate(My_message.LABEL_GEORGIAN, "ქართული:");
+                temp1.addTranslate(My_message.LABEL_FOREIGHNER, "უცხოელი:");
+                temp1.addTranslate(My_message.LABEL_LANGUAGE_CHANGER, "ენა:");
+                temp1.addTranslate(My_message.LABEL_GROUPBOX_NAME, "ავტორიზაცია:");
+                
+                LanguagePack temp2 = new LanguagePack(Lang.ENGLISH);
+                temp2.addTranslate(My_message.LABEL_ID, "ID:");
+                temp2.addTranslate(My_message.LABEL_PASSWORD, "Password:");
+                temp2.addTranslate(My_message.LABEL_LOGIN, "Log In:");
+                temp2.addTranslate(My_message.LABEL_FORGET_PASSWORD, "Forget password?:");
+                temp2.addTranslate(My_message.LABEL_REGISTER, "Register:");
+                temp2.addTranslate(My_message.LABEL_GEORGIAN, "Georgian:");
+                temp2.addTranslate(My_message.LABEL_FOREIGHNER, "Foreighner:");
+                temp2.addTranslate(My_message.LABEL_LANGUAGE_CHANGER, "language:");
+                temp2.addTranslate(My_message.LABEL_GROUPBOX_NAME, "Authorization:");
+            }
+            catch (NullReferenceException ex) { MessageBox.Show($"Error with1:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+            catch (ArgumentNullException ex) { MessageBox.Show($"Error with2:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+            catch (Exception ex) { MessageBox.Show($"Error with3:{ex.Message} ", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); }
+        }
+        /*
+         to switch language when we want them to be switched 
+         */
         private void btn_registration_Click(object sender, EventArgs e)
         {
             RegistrationForm registrationForm = new RegistrationForm();
             this.Hide();
             registrationForm.Show();
         }
+       
     }
 }
