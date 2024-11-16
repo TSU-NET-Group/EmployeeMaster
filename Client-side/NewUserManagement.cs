@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Spire.Xls;
 
 
 namespace Registration
@@ -33,6 +35,9 @@ namespace Registration
 
         public static DataGridView temp_data_grid_view;
 
+
+        public static TextBox bulk_register_text_box;
+        public static Button bulk_register_button;
 
         public NewUserManagement()
         {
@@ -115,13 +120,32 @@ namespace Registration
             this.Controls.Add(refresh_button);
 
 
+            // bulk registration
+            bulk_register_text_box = new TextBox
+            {
+                Size = new Size(150, 25),
+                Location = new Point(640, 350),
+                Text = "Path"
+            };
+            this.Controls.Add(bulk_register_text_box);
 
+            bulk_register_button = new Button
+            {
+                Size = new Size(100, 50),
+                Location = new Point(665, 380),
+                Text = "Bulk Register",
+            };
+            bulk_register_button.Click += new EventHandler(bulk_register_button_Click);
+
+            this.Controls.Add(bulk_register_button);
+
+            
             // create dummy data for testing
             user_struct user1 = new user_struct { user_id = "555555", user_email = "sasa@gmail.com", user_phone = "45875489", user_name = "saba shengelia", user_keycard = "56412314", user_department_id = 2, user_position_id = 3 };
             user_struct user2 = new user_struct { user_id = "8945884", user_email = "soso@gmail.com", user_phone = "84578423", user_name = "soso wiqarishvili", user_keycard = "114235641", user_department_id = 3, user_position_id = 2 };
             user_struct user3 = new user_struct { user_id = "47894652", user_email = "jemal@gmail.com", user_phone = "84578423", user_name = "jemal kandavili", user_keycard = "45618", user_department_id = 1, user_position_id = 1 };
             user_struct user4 = new user_struct { user_id = "594884", user_email = "nino@gmail.com", user_phone = "7859234", user_name = "nino bugadze", user_keycard = "456218", user_department_id = 5, user_position_id = 3 };
-
+            
             // add the dummy data to the data table
             add_to_user_table(user4, user2, user3, user1);
 
@@ -154,9 +178,59 @@ namespace Registration
             }
         }
 
-        public static void BulkRegister()
+        public static void bulk_register_from_excel(string file_path)
         {
-            // TODO: IMPLEMENT
+            // Check if the file exists
+            if (!File.Exists(file_path))
+            {
+                MessageBox.Show("File not found!");
+                return;
+            }
+
+            try
+            {
+                // Load the Excel document
+                Workbook workbook = new Workbook();
+                workbook.LoadFromFile(file_path);
+
+                // Load the first worksheet
+                Worksheet worksheet = workbook.Worksheets[0];
+                // Define the range of data (assuming data starts at A1)
+                CellRange range = worksheet.Range["A1:" + worksheet.LastCell.Address];
+
+                // Export the range to a DataTable, with headers from the first row
+                DataTable excelDataTable = worksheet.ExportDataTable(range, true, true);
+
+                // Dispose of the workbook to release resources
+                workbook.Dispose();
+
+                // Check if column headers in the Excel file match the column names in the user_data_table
+                var columnNamesMatch = excelDataTable.Columns.Cast<DataColumn>()
+                    .All(col => user_data_table.Columns.Contains(col.ColumnName));
+
+                if (!columnNamesMatch)
+                {
+                    MessageBox.Show("Column names in the Excel file do not match the data table structure.");
+                    return;
+                }
+
+                // Add rows from the Excel DataTable to the main user data table
+                foreach (DataRow excelRow in excelDataTable.Rows)
+                {
+                    DataRow newRow = user_data_table.NewRow();
+                    foreach (DataColumn column in excelDataTable.Columns)
+                    {
+                        newRow[column.ColumnName] = excelRow[column.ColumnName];
+                    }
+                    user_data_table.Rows.Add(newRow);
+                }
+
+                MessageBox.Show("Bulk registration completed successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
         }
 
 
@@ -211,6 +285,11 @@ namespace Registration
             }
         }
 
+        private void bulk_register_button_Click(object sender, EventArgs e)
+        {
+            bulk_register_from_excel(bulk_register_text_box.Text);
+            // TODO: DO VALIDATION OR SM
+        }
 
         private void save_button_click(object sender, EventArgs e)
         {
