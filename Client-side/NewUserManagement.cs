@@ -12,14 +12,13 @@ namespace Registration
     // this struct can be used to save new user info
     public struct user_struct
     {
-        public int id;
         public string user_id;
         public string user_email;
-        public int user_phone;
+        public string user_phone;
         public string user_name;
         public string user_keycard;
-        public string user_department;
-        public string user_position;
+        public int user_department_id;
+        public int user_position_id;
     }
 
     public partial class NewUserManagement : Form
@@ -118,10 +117,10 @@ namespace Registration
 
 
             // create dummy data for testing
-            user_struct user1 = new user_struct { id = 1, user_id = "555555", user_email = "sasa@gmail.com", user_phone = 45875489, user_name = "saba shengelia", user_keycard = "56412314", user_department = "dasuftaveba", user_position = "senior damlagebeli" };
-            user_struct user2 = new user_struct { id = 2, user_id = "8945884", user_email = "soso@gmail.com", user_phone = 84578423, user_name = "soso wiqarishvili", user_keycard = "114235641", user_department = "software development", user_position = "junior backend developer" };
-            user_struct user3 = new user_struct { id = 3, user_id = "47894652", user_email = "jemal@gmail.com", user_phone = 84578423, user_name = "jemal kandavili", user_keycard = "45618", user_department = "driver development", user_position = "manager" };
-            user_struct user4 = new user_struct { id = 4, user_id = "594884", user_email = "nino@gmail.com", user_phone = 7859234, user_name = "nino bugadze", user_keycard = "456218", user_department = "KGB", user_position = "CLASSIFIED" };
+            user_struct user1 = new user_struct { user_id = "555555", user_email = "sasa@gmail.com", user_phone = "45875489", user_name = "saba shengelia", user_keycard = "56412314", user_department_id = 2, user_position_id = 3 };
+            user_struct user2 = new user_struct { user_id = "8945884", user_email = "soso@gmail.com", user_phone = "84578423", user_name = "soso wiqarishvili", user_keycard = "114235641", user_department_id = 3, user_position_id = 2 };
+            user_struct user3 = new user_struct { user_id = "47894652", user_email = "jemal@gmail.com", user_phone = "84578423", user_name = "jemal kandavili", user_keycard = "45618", user_department_id = 1, user_position_id = 1 };
+            user_struct user4 = new user_struct { user_id = "594884", user_email = "nino@gmail.com", user_phone = "7859234", user_name = "nino bugadze", user_keycard = "456218", user_department_id = 5, user_position_id = 3 };
 
             // add the dummy data to the data table
             add_to_user_table(user4, user2, user3, user1);
@@ -145,18 +144,20 @@ namespace Registration
             foreach (user_struct _user in _users)
             {
                 user_data_table.Rows.Add(
-                    _user.id,
                     _user.user_id,
                     _user.user_email,
                     _user.user_phone,
                     _user.user_name,
                     _user.user_keycard,
-                    _user.user_department,
-                    _user.user_position);
+                    _user.user_department_id,
+                    _user.user_position_id);
             }
         }
 
-
+        public static void BulkRegister()
+        {
+            // TODO: IMPLEMENT
+        }
 
 
         private void search_text_box_TextChanged(object sender, EventArgs e)

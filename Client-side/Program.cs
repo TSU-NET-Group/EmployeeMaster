@@ -38,7 +38,7 @@ namespace EmployeeMaster
 
             Application.Run(new RegistrationForm());
             //Application.Run(new RegistrationForm());
-            //Application.Run(new NewUserManagement());
+            Application.Run(new NewUserManagement());
         }
     }
 }

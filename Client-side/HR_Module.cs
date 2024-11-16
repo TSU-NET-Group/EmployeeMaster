@@ -15,14 +15,13 @@ namespace EmployeeMaster
     public static class columns
     {
         public static List<DataColumn> column_names = new List<DataColumn> { 
-            new DataColumn("id",typeof(int)),
             new DataColumn("user_personal_id",typeof(string)),
             new DataColumn("user_mail",typeof(string)),
             new DataColumn("user_phone",typeof(string)),
             new DataColumn("user_name",typeof(string)),
             new DataColumn("user_keycard",typeof(string)),
-            new DataColumn("user_department",typeof(string)),
-            new DataColumn("user_position",typeof(string)),
+            new DataColumn("user_department_id",typeof(int)),
+            new DataColumn("user_position_id",typeof(int)),
             };    
     }
 
@@ -205,7 +204,7 @@ namespace EmployeeMaster
 
 
         
-        
+
 
     }
 
@@ -220,8 +219,75 @@ namespace EmployeeMaster
 
     class Hr_Schedule_module : HR_module
     {
-        
-        
+
+        DataTable time_table;
+
+        public Hr_Schedule_module()
+        {
+            time_table.Columns.Add("name/surname", typeof(string));
+            time_table.Columns.Add("id", typeof(int));
+            time_table.Columns.Add("check in time", typeof(string));
+            time_table.Columns.Add("check out time", typeof(string));
+            time_table.Columns.Add("time worked", typeof(string));
+
+            //this will be modified so i am not gonna bother with
+            //putting too much effort in this part of the code for now
+            for (int i=0;i< Employee_Table.Rows.Count;i++)
+            {
+                //DataRow temp = new DataRow(Employee_Table.Rows[i][0], Employee_Table.Rows[i][1]);
+                DataRow temp = time_table.NewRow();
+                temp["name/surname"] = Employee_Table.Rows[i][0];
+                temp["id"] = Employee_Table.Rows[i][1];
+                //to do later when database is made
+                temp["check in time"] = "";
+                temp["check in time"] = "";
+                temp["check in time"] = "";
+                time_table.Rows.Add(temp);
+            }
+            
+        }
+
+        void time_manager(int id)
+        {
+            //this will be recieved from the database
+            Schedule temp_schedule = new Schedule(new int[,] { });
+
+            int index=-1;
+            for (int i = 0; i < time_table.Rows.Count; i++)
+            {
+                if ((int)time_table.Rows[i][1] == id)
+                {
+                    index = id;
+                }
+            }
+            //this will be recieved from the check in/check out device
+            int[] work_time = new int[4];
+
+
+
+
+            if (work_time[0] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 0] &&
+                work_time[1] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 1])
+            {
+                if (index != -1)
+                {
+                    //is on time
+                    
+                }
+                
+            }
+
+            if (work_time[2] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 2] &&
+                work_time[3] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 3])
+            {
+                if (index != -1)
+                {
+                    //left on time
+
+                }
+
+            }
+        }
     }
 
   
