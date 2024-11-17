@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spire.Xls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,7 +7,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Spire.Xls;
+
+
 
 
 namespace Registration
@@ -139,13 +141,13 @@ namespace Registration
 
             this.Controls.Add(bulk_register_button);
 
-            
+
             // create dummy data for testing
             user_struct user1 = new user_struct { user_id = "555555", user_email = "sasa@gmail.com", user_phone = "45875489", user_name = "saba shengelia", user_keycard = "56412314", user_department_id = 2, user_position_id = 3 };
             user_struct user2 = new user_struct { user_id = "8945884", user_email = "soso@gmail.com", user_phone = "84578423", user_name = "soso wiqarishvili", user_keycard = "114235641", user_department_id = 3, user_position_id = 2 };
             user_struct user3 = new user_struct { user_id = "47894652", user_email = "jemal@gmail.com", user_phone = "84578423", user_name = "jemal kandavili", user_keycard = "45618", user_department_id = 1, user_position_id = 1 };
             user_struct user4 = new user_struct { user_id = "594884", user_email = "nino@gmail.com", user_phone = "7859234", user_name = "nino bugadze", user_keycard = "456218", user_department_id = 5, user_position_id = 3 };
-            
+
             // add the dummy data to the data table
             add_to_user_table(user4, user2, user3, user1);
 
@@ -189,40 +191,17 @@ namespace Registration
 
             try
             {
-                // Load the Excel document
                 Workbook workbook = new Workbook();
                 workbook.LoadFromFile(file_path);
 
-                // Load the first worksheet
                 Worksheet worksheet = workbook.Worksheets[0];
-                // Define the range of data (assuming data starts at A1)
-                CellRange range = worksheet.Range["A1:" + worksheet.LastCell.Address];
 
-                // Export the range to a DataTable, with headers from the first row
-                DataTable excelDataTable = worksheet.ExportDataTable(range, true, true);
+                DataTable read_data = worksheet.ExportDataTable();
 
-                // Dispose of the workbook to release resources
-                workbook.Dispose();
-
-                // Check if column headers in the Excel file match the column names in the user_data_table
-                var columnNamesMatch = excelDataTable.Columns.Cast<DataColumn>()
-                    .All(col => user_data_table.Columns.Contains(col.ColumnName));
-
-                if (!columnNamesMatch)
+                // Merge read_data into user_data_table
+                foreach (DataRow row in read_data.Rows)
                 {
-                    MessageBox.Show("Column names in the Excel file do not match the data table structure.");
-                    return;
-                }
-
-                // Add rows from the Excel DataTable to the main user data table
-                foreach (DataRow excelRow in excelDataTable.Rows)
-                {
-                    DataRow newRow = user_data_table.NewRow();
-                    foreach (DataColumn column in excelDataTable.Columns)
-                    {
-                        newRow[column.ColumnName] = excelRow[column.ColumnName];
-                    }
-                    user_data_table.Rows.Add(newRow);
+                    user_data_table.Rows.Add(row.ItemArray);
                 }
 
                 MessageBox.Show("Bulk registration completed successfully!");
@@ -232,6 +211,7 @@ namespace Registration
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
+
 
 
         private void search_text_box_TextChanged(object sender, EventArgs e)
