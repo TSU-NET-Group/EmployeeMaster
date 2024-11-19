@@ -201,7 +201,8 @@ namespace Registration
                 // Merge read_data into user_data_table
                 foreach (DataRow row in read_data.Rows)
                 {
-                    user_data_table.Rows.Add(row.ItemArray);
+                    if(!(row.ItemArray.All(i => i is DBNull)))
+                        user_data_table.Rows.Add(row.ItemArray);
                 }
 
                 MessageBox.Show("Bulk registration completed successfully!");
