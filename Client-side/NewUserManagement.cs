@@ -197,7 +197,7 @@ namespace Registration
                 Worksheet worksheet = workbook.Worksheets[0];
 
                 DataTable read_data = worksheet.ExportDataTable();
-
+                
                 // Merge read_data into user_data_table
                 foreach (DataRow row in read_data.Rows)
                 {
@@ -268,8 +268,12 @@ namespace Registration
 
         private void bulk_register_button_Click(object sender, EventArgs e)
         {
+            /*
             bulk_register_from_excel(bulk_register_text_box.Text);
-            // TODO: DO VALIDATION OR SM
+            // TODO: DO VALIDATION OR SM*/
+
+
+            Utility.DataIO.write_to_excel(@"C:\\Users\\sabak\\Desktop\\testdata_saved.xlsx", user_data_table, user_data_table);
         }
 
         private void save_button_click(object sender, EventArgs e)

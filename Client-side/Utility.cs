@@ -132,7 +132,7 @@ namespace Utility
     }
 
 
-    public static class DataReaders
+    public static class DataIO
     {
         public static DataTable[] read_tables_from_excel(string excel_path)
         {
@@ -159,6 +159,43 @@ namespace Utility
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
                 return null;
+            }
+        }
+
+
+        // takes in path to the file and data tables, then writes these data tables as sheets in an excel file
+        public static void write_to_excel(string excel_path, params DataTable[] tables)
+        {
+            try
+            {
+                Workbook workbook = new Workbook();
+
+                if (tables == null || tables.Length == 0)
+                {
+                    MessageBox.Show("No tables provided to write.");
+                    return;
+                }
+
+                // Use the default sheet for the first DataTable
+                Worksheet defaultSheet = workbook.Worksheets[0];
+                defaultSheet.Name = "Sheet1";
+                defaultSheet.InsertDataTable(tables[0], true, 1, 1);
+
+                // Add additional sheets for remaining DataTables
+                for (int i = 1; i < tables.Length; i++)
+                {
+                    Worksheet sheet = workbook.Worksheets.Add($"Sheet{i + 1}");
+                    sheet.InsertDataTable(tables[i], true, 1, 1);
+                }
+
+                // Save the workbook to the specified path
+                workbook.SaveToFile(excel_path, ExcelVersion.Version2013);
+
+                MessageBox.Show("Excel file created successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while writing to Excel: {ex.Message}");
             }
         }
     }
