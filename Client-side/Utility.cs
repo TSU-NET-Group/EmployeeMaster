@@ -1,5 +1,10 @@
-﻿using System.Linq.Expressions;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using Spire.Xls;
 
 namespace Utility
 {
@@ -99,7 +104,7 @@ namespace Utility
 
         // remove all white space
         public static string normalize_phone(string input) => input.Replace(" ", "");
-      
+
 
         // cuurently only works for georgian IDs
         public static bool verify_id(string input, string regex_pattern = @"^\d{11}$") => Regex.IsMatch(input, regex_pattern);
@@ -125,4 +130,37 @@ namespace Utility
             }
         }
     }
+
+
+    public static class DataReaders
+    {
+        public static DataTable[] read_tables_from_excel(string excel_path)
+        {
+            if (!File.Exists(excel_path))
+            {
+                MessageBox.Show($"File: {{{excel_path}}} doesn't exist");
+                return null;
+            }
+
+            List<DataTable> tables = new List<DataTable>();
+            try
+            {
+                Workbook workbook = new Workbook();
+                workbook.LoadFromFile(excel_path);
+
+                foreach (Worksheet sheet in workbook.Worksheets)
+                {
+                    tables.Add(sheet.ExportDataTable());
+                }
+
+                return tables.ToArray();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+                return null;
+            }
+        }
+    }
+
 }

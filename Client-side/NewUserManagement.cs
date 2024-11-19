@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Spire.Xls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+
+
 
 
 namespace Registration
@@ -33,6 +37,9 @@ namespace Registration
 
         public static DataGridView temp_data_grid_view;
 
+
+        public static TextBox bulk_register_text_box;
+        public static Button bulk_register_button;
 
         public NewUserManagement()
         {
@@ -115,6 +122,25 @@ namespace Registration
             this.Controls.Add(refresh_button);
 
 
+            // bulk registration
+            bulk_register_text_box = new TextBox
+            {
+                Size = new Size(150, 25),
+                Location = new Point(640, 350),
+                Text = "Path"
+            };
+            this.Controls.Add(bulk_register_text_box);
+
+            bulk_register_button = new Button
+            {
+                Size = new Size(100, 50),
+                Location = new Point(665, 380),
+                Text = "Bulk Register",
+            };
+            bulk_register_button.Click += new EventHandler(bulk_register_button_Click);
+
+            this.Controls.Add(bulk_register_button);
+
 
             // create dummy data for testing
             user_struct user1 = new user_struct { user_id = "555555", user_email = "sasa@gmail.com", user_phone = "45875489", user_name = "saba shengelia", user_keycard = "56412314", user_department_id = 2, user_position_id = 3 };
@@ -154,10 +180,39 @@ namespace Registration
             }
         }
 
-        public static void BulkRegister()
+        public static void bulk_register_from_excel(string file_path)
         {
-            // TODO: IMPLEMENT
+            // Check if the file exists
+            if (!File.Exists(file_path))
+            {
+                MessageBox.Show("File not found!");
+                return;
+            }
+
+            try
+            {
+                Workbook workbook = new Workbook();
+                workbook.LoadFromFile(file_path);
+
+                Worksheet worksheet = workbook.Worksheets[0];
+
+                DataTable read_data = worksheet.ExportDataTable();
+
+                // Merge read_data into user_data_table
+                foreach (DataRow row in read_data.Rows)
+                {
+                    if(!(row.ItemArray.All(i => i is DBNull)))
+                        user_data_table.Rows.Add(row.ItemArray);
+                }
+
+                MessageBox.Show("Bulk registration completed successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
         }
+
 
 
         private void search_text_box_TextChanged(object sender, EventArgs e)
@@ -211,6 +266,11 @@ namespace Registration
             }
         }
 
+        private void bulk_register_button_Click(object sender, EventArgs e)
+        {
+            bulk_register_from_excel(bulk_register_text_box.Text);
+            // TODO: DO VALIDATION OR SM
+        }
 
         private void save_button_click(object sender, EventArgs e)
         {
