@@ -1,5 +1,4 @@
-﻿using Spire.Xls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-
 
 
 
@@ -189,28 +187,18 @@ namespace Registration
                 return;
             }
 
-            try
+            DataTable[] dataTables = Utility.DataIO.read_tables_from_excel(file_path);
+
+            foreach (DataTable table in dataTables)
             {
-                Workbook workbook = new Workbook();
-                workbook.LoadFromFile(file_path);
-
-                Worksheet worksheet = workbook.Worksheets[0];
-
-                DataTable read_data = worksheet.ExportDataTable();
-                
-                // Merge read_data into user_data_table
-                foreach (DataRow row in read_data.Rows)
+                foreach (DataRow row in table.Rows)
                 {
-                    if(!(row.ItemArray.All(i => i is DBNull)))
+                    if (!(row.ItemArray.All(i => i is DBNull)))
                         user_data_table.Rows.Add(row.ItemArray);
                 }
+            }
 
-                MessageBox.Show("Bulk registration completed successfully!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
+            MessageBox.Show("Bulk Registration Completed Successfully");
         }
 
 
@@ -268,12 +256,12 @@ namespace Registration
 
         private void bulk_register_button_Click(object sender, EventArgs e)
         {
-            /*
+
             bulk_register_from_excel(bulk_register_text_box.Text);
-            // TODO: DO VALIDATION OR SM*/
+            // TODO: DO VALIDATION OR SM
 
 
-            Utility.DataIO.write_to_excel(@"C:\\Users\\sabak\\Desktop\\testdata_saved.xlsx", user_data_table, user_data_table);
+            //Utility.DataIO.write_to_excel(@"C:\\Users\\sabak\\Desktop\\testdata_saved.xlsx", user_data_table, user_data_table); // this was for testing
         }
 
         private void save_button_click(object sender, EventArgs e)

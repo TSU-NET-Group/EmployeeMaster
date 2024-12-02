@@ -1,10 +1,12 @@
-﻿using System;
+﻿using ExcelDataReader;
+using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Spire.Xls;
 
 namespace Utility
 {
@@ -134,6 +136,13 @@ namespace Utility
 
     public static class DataIO
     {
+        public struct DataSheet
+        {
+            public DataTable dataTable;
+            public string sheetName;
+        }
+
+
         public static DataTable[] read_tables_from_excel(string excel_path)
         {
             if (!File.Exists(excel_path))
@@ -145,12 +154,23 @@ namespace Utility
             List<DataTable> tables = new List<DataTable>();
             try
             {
-                Workbook workbook = new Workbook();
-                workbook.LoadFromFile(excel_path);
+                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
-                foreach (Worksheet sheet in workbook.Worksheets)
+                using (FileStream stream = File.Open(excel_path, FileMode.Open, FileAccess.Read))
                 {
-                    tables.Add(sheet.ExportDataTable());
+                    using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                    {
+                        // Configure to treat the first row as column headers
+                        DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                        {
+                            ConfigureDataTable = (tableReader) => new ExcelDataTableConfiguration()
+                            {
+                                UseHeaderRow = true // Use the first row as column headers
+                            }
+                        });
+
+                        tables.AddRange(result.Tables.Cast<DataTable>());
+                    }
                 }
 
                 return tables.ToArray();
@@ -162,40 +182,46 @@ namespace Utility
             }
         }
 
+        public static void add_data_table_to_excel(string excel_path, DataTable table, string sheet_name)
+        {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            FileInfo file = new FileInfo(excel_path);
+
+            using (ExcelPackage package = file.Exists ? new ExcelPackage(file) : new ExcelPackage())
+            {
+                // Check if the sheet name already exists
+                ExcelWorksheet existingSheet = package.Workbook.Worksheets[sheet_name];
+                if (existingSheet != null)
+                {
+                    throw new InvalidOperationException($"A sheet with the name '{sheet_name}' already exists in the file.");
+                }
+
+                // Add a new worksheet and load the data from the DataTable
+                var worksheet = package.Workbook.Worksheets.Add(sheet_name);
+                worksheet.Cells["A1"].LoadFromDataTable(table, true);
+
+                // Save the package to file
+                package.SaveAs(file);
+            }
+        }
 
         // takes in path to the file and data tables, then writes these data tables as sheets in an excel file
         public static void write_to_excel(string excel_path, params DataTable[] tables)
         {
-            try
+            for (int i = 0; i < tables.Length; i++)
             {
-                Workbook workbook = new Workbook();
-
-                if (tables == null || tables.Length == 0)
-                {
-                    MessageBox.Show("No tables provided to write.");
-                    return;
-                }
-
-                // Use the default sheet for the first DataTable
-                Worksheet defaultSheet = workbook.Worksheets[0];
-                defaultSheet.Name = "Sheet1";
-                defaultSheet.InsertDataTable(tables[0], true, 1, 1);
-
-                // Add additional sheets for remaining DataTables
-                for (int i = 1; i < tables.Length; i++)
-                {
-                    Worksheet sheet = workbook.Worksheets.Add($"Sheet{i + 1}");
-                    sheet.InsertDataTable(tables[i], true, 1, 1);
-                }
-
-                // Save the workbook to the specified path
-                workbook.SaveToFile(excel_path, ExcelVersion.Version2013);
-
-                MessageBox.Show("Excel file created successfully.");
+                add_data_table_to_excel(excel_path, tables[i], String.Join("", "Sheet", i));
             }
-            catch (Exception ex)
+        }
+
+        // takes in path to the file and data tables, then writes these data tables as sheets with given name in an excel file
+        public static void write_to_excel(string excel_path, params DataSheet[] dataSheets)
+        {
+            foreach (DataSheet dataSheet in dataSheets)
             {
-                MessageBox.Show($"An error occurred while writing to Excel: {ex.Message}");
+                add_data_table_to_excel(excel_path, dataSheet.dataTable, dataSheet.sheetName);
             }
         }
     }
