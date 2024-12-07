@@ -222,6 +222,7 @@ namespace EmployeeMaster
 
         DataTable time_table;
 
+        
         public Hr_Schedule_module()
         {
             time_table.Columns.Add("name/surname", typeof(string));
@@ -249,44 +250,54 @@ namespace EmployeeMaster
 
         void time_manager(int id)
         {
+            
+
+
             //this will be recieved from the database
-            Schedule temp_schedule = new Schedule(new int[,] { });
+            //Schedule temp_schedule = new Schedule(new int[,] { });
 
-            int index=-1;
-            for (int i = 0; i < time_table.Rows.Count; i++)
-            {
-                if ((int)time_table.Rows[i][1] == id)
-                {
-                    index = id;
-                }
-            }
-            //this will be recieved from the check in/check out device
-            int[] work_time = new int[4];
+            //int index=-1;
+            //int timetableind = -1;
+            //for (int i = 0; i < time_table.Rows.Count; i++)
+            //{
+            //    if ((int)time_table.Rows[i][1] == id)
+            //    {
+            //        index = id;
+            //        timetableind = i;
+            //    }
+            //}
+
+            ////this will be recieved from the check in/check out device
+            //int[] work_time = new int[4];
 
 
 
 
-            if (work_time[0] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 0] &&
-                work_time[1] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 1])
-            {
-                if (index != -1)
-                {
-                    //is on time
+            //if (work_time[0] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 0] &&
+            //    work_time[1] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 1])
+            //{
+            //    if (index != -1)
+            //    {
+            //        //is on time
+            //        checked_in = true;
                     
-                }
+
+            //    }
                 
-            }
+            //}
 
-            if (work_time[2] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 2] &&
-                work_time[3] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 3])
-            {
-                if (index != -1)
-                {
-                    //left on time
+            //if (work_time[2] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 2] &&
+            //    work_time[3] > temp_schedule.schedule[(int)DateTime.Now.DayOfWeek, 3])
+            //{
+            //    if (index != -1)
+            //    {
+            //        //left on time
+            //        checked_out = false;
+                    
+            //    }
 
-                }
+            //}
 
-            }
         }
     }
 

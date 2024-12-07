@@ -31,6 +31,12 @@ namespace EmployeeMaster
         {
             this.HR_CMS = new System.Windows.Forms.TabControl();
             this.Employee_List = new System.Windows.Forms.TabPage();
+            this.Positions_in_Department = new System.Windows.Forms.ComboBox();
+            this.Departments = new System.Windows.Forms.TabControl();
+            this.All = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Search_Option = new System.Windows.Forms.ComboBox();
             this.Add_Employee = new System.Windows.Forms.TabPage();
             this.Schedule_Manager = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -47,12 +53,6 @@ namespace EmployeeMaster
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.All = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Search_Option = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Positions_in_Department = new System.Windows.Forms.ComboBox();
-            this.Departments = new System.Windows.Forms.TabControl();
             this.Name_Surname_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_M = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,23 +86,43 @@ namespace EmployeeMaster
             this.N29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.N31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.HR_CMS.SuspendLayout();
             this.Employee_List.SuspendLayout();
+            this.Departments.SuspendLayout();
+            this.All.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Add_Employee.SuspendLayout();
             this.Schedule_Manager.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.Daily.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.Monthly.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            this.All.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.Departments.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // HR_CMS
             // 
             this.HR_CMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.HR_CMS.Controls.Add(this.Employee_List);
+            this.HR_CMS.Controls.Add(this.tabPage1);
             this.HR_CMS.Controls.Add(this.Add_Employee);
             this.HR_CMS.Controls.Add(this.Schedule_Manager);
             this.HR_CMS.Location = new System.Drawing.Point(12, 12);
@@ -126,14 +146,91 @@ namespace EmployeeMaster
             this.Employee_List.UseVisualStyleBackColor = true;
             this.Employee_List.Click += new System.EventHandler(this.Department_1_Click);
             // 
+            // Positions_in_Department
+            // 
+            this.Positions_in_Department.FormattingEnabled = true;
+            this.Positions_in_Department.Items.AddRange(new object[] {
+            "All"});
+            this.Positions_in_Department.Location = new System.Drawing.Point(441, 516);
+            this.Positions_in_Department.Name = "Positions_in_Department";
+            this.Positions_in_Department.Size = new System.Drawing.Size(236, 21);
+            this.Positions_in_Department.TabIndex = 9;
+            this.Positions_in_Department.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            // 
+            // Departments
+            // 
+            this.Departments.Controls.Add(this.All);
+            this.Departments.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Departments.Location = new System.Drawing.Point(3, 3);
+            this.Departments.Margin = new System.Windows.Forms.Padding(0);
+            this.Departments.Name = "Departments";
+            this.Departments.SelectedIndex = 0;
+            this.Departments.Size = new System.Drawing.Size(982, 514);
+            this.Departments.TabIndex = 0;
+            // 
+            // All
+            // 
+            this.All.Controls.Add(this.dataGridView1);
+            this.All.Location = new System.Drawing.Point(4, 22);
+            this.All.Name = "All";
+            this.All.Padding = new System.Windows.Forms.Padding(3);
+            this.All.Size = new System.Drawing.Size(974, 488);
+            this.All.TabIndex = 2;
+            this.All.Text = "All";
+            this.All.UseVisualStyleBackColor = true;
+            this.All.Click += new System.EventHandler(this.Department_3_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(968, 482);
+            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 517);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(224, 20);
+            this.textBox1.TabIndex = 3;
+            // 
+            // Search_Option
+            // 
+            this.Search_Option.FormattingEnabled = true;
+            this.Search_Option.Items.AddRange(new object[] {
+            "Name/Surname",
+            "ID",
+            "Email"});
+            this.Search_Option.Location = new System.Drawing.Point(236, 516);
+            this.Search_Option.Name = "Search_Option";
+            this.Search_Option.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Search_Option.Size = new System.Drawing.Size(199, 21);
+            this.Search_Option.TabIndex = 4;
+            this.Search_Option.Tag = "";
+            this.Search_Option.Text = "Search by:";
+            this.Search_Option.SelectedIndexChanged += new System.EventHandler(this.Search_Option_SelectedIndexChanged);
+            // 
             // Add_Employee
             // 
+            this.Add_Employee.Controls.Add(this.label8);
+            this.Add_Employee.Controls.Add(this.checkedListBox1);
+            this.Add_Employee.Controls.Add(this.button2);
+            this.Add_Employee.Controls.Add(this.label7);
+            this.Add_Employee.Controls.Add(this.label6);
+            this.Add_Employee.Controls.Add(this.textBox6);
+            this.Add_Employee.Controls.Add(this.textBox3);
+            this.Add_Employee.Controls.Add(this.textBox2);
+            this.Add_Employee.Controls.Add(this.label1);
             this.Add_Employee.Location = new System.Drawing.Point(4, 22);
             this.Add_Employee.Name = "Add_Employee";
             this.Add_Employee.Padding = new System.Windows.Forms.Padding(3);
             this.Add_Employee.Size = new System.Drawing.Size(988, 541);
             this.Add_Employee.TabIndex = 3;
-            this.Add_Employee.Text = "Add Employee";
+            this.Add_Employee.Text = "Group Manager";
             this.Add_Employee.UseVisualStyleBackColor = true;
             // 
             // Schedule_Manager
@@ -323,74 +420,6 @@ namespace EmployeeMaster
             this.dataGridView5.TabIndex = 0;
             this.dataGridView5.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellContentClick);
             // 
-            // All
-            // 
-            this.All.Controls.Add(this.dataGridView1);
-            this.All.Location = new System.Drawing.Point(4, 22);
-            this.All.Name = "All";
-            this.All.Padding = new System.Windows.Forms.Padding(3);
-            this.All.Size = new System.Drawing.Size(974, 488);
-            this.All.TabIndex = 2;
-            this.All.Text = "All";
-            this.All.UseVisualStyleBackColor = true;
-            this.All.Click += new System.EventHandler(this.Department_3_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(6, 517);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 20);
-            this.textBox1.TabIndex = 3;
-            // 
-            // Search_Option
-            // 
-            this.Search_Option.FormattingEnabled = true;
-            this.Search_Option.Items.AddRange(new object[] {
-            "Name/Surname",
-            "ID",
-            "Email"});
-            this.Search_Option.Location = new System.Drawing.Point(236, 516);
-            this.Search_Option.Name = "Search_Option";
-            this.Search_Option.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Search_Option.Size = new System.Drawing.Size(199, 21);
-            this.Search_Option.TabIndex = 4;
-            this.Search_Option.Tag = "";
-            this.Search_Option.Text = "Search by:";
-            this.Search_Option.SelectedIndexChanged += new System.EventHandler(this.Search_Option_SelectedIndexChanged);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(968, 482);
-            this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Positions_in_Department
-            // 
-            this.Positions_in_Department.FormattingEnabled = true;
-            this.Positions_in_Department.Items.AddRange(new object[] {
-            "All"});
-            this.Positions_in_Department.Location = new System.Drawing.Point(441, 516);
-            this.Positions_in_Department.Name = "Positions_in_Department";
-            this.Positions_in_Department.Size = new System.Drawing.Size(236, 21);
-            this.Positions_in_Department.TabIndex = 9;
-            this.Positions_in_Department.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
-            // 
-            // Departments
-            // 
-            this.Departments.Controls.Add(this.All);
-            this.Departments.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Departments.Location = new System.Drawing.Point(3, 3);
-            this.Departments.Margin = new System.Windows.Forms.Padding(0);
-            this.Departments.Name = "Departments";
-            this.Departments.SelectedIndex = 0;
-            this.Departments.Size = new System.Drawing.Size(982, 514);
-            this.Departments.TabIndex = 0;
-            // 
             // Name_Surname_M
             // 
             this.Name_Surname_M.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -558,6 +587,168 @@ namespace EmployeeMaster
             this.N31.HeaderText = "31";
             this.N31.Name = "N31";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.comboBox3);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.textBox7);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(988, 541);
+            this.tabPage1.TabIndex = 4;
+            this.tabPage1.Text = "Add Employee to Schedule";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(517, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "insert shift start time (following format: 12:00, 11:43, 00:00, \':\' symbol can be" +
+    " replaced by any other character)";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(9, 71);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 1;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(9, 149);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 2;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(9, 223);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 133);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "insert shift end time";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 207);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(142, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "name for the schedule group";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(209, 221);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(181, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "add schedule group";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "ორშაბათი",
+            "სამშაბათი",
+            "ოთხშაბათი",
+            "ხუთშაბათი",
+            "პარასკევი",
+            "შაბათი",
+            "კვირა"});
+            this.checkedListBox1.Location = new System.Drawing.Point(424, 102);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(111, 109);
+            this.checkedListBox1.TabIndex = 10;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(393, 86);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(142, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "choose work days in a week";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(315, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "ID of the user";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(318, 72);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(315, 20);
+            this.textBox7.TabIndex = 8;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(315, 125);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Emploee name: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(404, 125);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(315, 186);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "choose the schedule group";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(318, 202);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(315, 21);
+            this.comboBox3.TabIndex = 12;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(367, 275);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(203, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "add user to the schedule group";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // HRview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -571,6 +762,11 @@ namespace EmployeeMaster
             this.HR_CMS.ResumeLayout(false);
             this.Employee_List.ResumeLayout(false);
             this.Employee_List.PerformLayout();
+            this.Departments.ResumeLayout(false);
+            this.All.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Add_Employee.ResumeLayout(false);
+            this.Add_Employee.PerformLayout();
             this.Schedule_Manager.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.Daily.ResumeLayout(false);
@@ -579,9 +775,8 @@ namespace EmployeeMaster
             this.Monthly.ResumeLayout(false);
             this.Monthly.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            this.All.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.Departments.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -645,6 +840,23 @@ namespace EmployeeMaster
         private System.Windows.Forms.DataGridViewTextBoxColumn N29;
         private System.Windows.Forms.DataGridViewTextBoxColumn N30;
         private System.Windows.Forms.DataGridViewTextBoxColumn N31;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
 

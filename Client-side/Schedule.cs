@@ -7,41 +7,24 @@ using System.Threading.Tasks;
 
 namespace EmployeeMaster
 {
-    public class Schedule
+    internal class schedule
     {
+        public string Schedule_Group_Name;
+        public bool[] workdays = new bool[7];
+        public Tuple<int, int> shift_hours;
 
-        // each day consists of 4 numbers
-        // fist number is check in hour, second number is check in minute 
-        // third  number is check out hour and forth number is check out minute
-
-        public int[,] schedule = new int[7,4];
-        
-        public Schedule(int[,] schedule_table)
+        public schedule(string schedule_Group_Name, bool[] workdays, string shift_s, string shift_e)
         {
-            if (schedule_table.Length == 7)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    //-1 indicates day off
-                    if(schedule_table[i, 1]<25 && schedule_table[i, 1] >= -1 &&
-                       schedule_table[i, 2] < 25 && schedule_table[i, 2] >= -1)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        throw new Exception("invalid hour/minute values");
-                    }
-                }
-                this.schedule = schedule_table;
-            }
-            else
-            {
-                throw new Exception("invalid schedula table size, must be 7 days");
-            }  
+            Schedule_Group_Name = schedule_Group_Name;
+            this.workdays = workdays;
+
+
+
+            int s = ((int)shift_s[0] - '0') * 1000 + ((int)shift_s[1] - '0') * 100 + ((int)shift_s[3] - '0') * 10 + ((int)shift_s[4] - '0');
+            int e = ((int)shift_e[0] - '0') * 1000 + ((int)shift_e[1] - '0') * 100 + ((int)shift_e[3] - '0') * 10 + ((int)shift_e[4] - '0');
+
+            shift_hours = new Tuple<int, int>(s, e);
+
         }
-
-
-        
     }
 }
